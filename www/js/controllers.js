@@ -462,4 +462,29 @@ angular.module('your_app_name.controllers', [])
 	};
 })
 
-;
+// PurchaseAndSaleCtrl
+.controller('PurchaseAndSaleCtrl', function($scope, $http, $ionicLoading) {
+
+$http({
+    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PurchaseAndSale', 
+    method: "GET",
+    params:  {index:2}, 
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+ }).then(function(resp) {
+    console.log(resp.data);
+   
+  $scope.purchaseAndSale = resp.data[0];
+
+
+
+
+  }, function(err) {
+    console.error('ERR', err);
+    // err.status will contain the status code
+  })
+
+
+
+});
+
+

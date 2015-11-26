@@ -120,7 +120,8 @@ angular.module('me', [
     url: "/purchaseAndSale",
     views: {
       'menuContent': {
-        templateUrl: "views/app/purchaseAndSale.html"
+        templateUrl: "views/app/purchaseAndSale.html",
+        controller: 'PurchaseAndSaleCtrl'
       }
     }
   })
