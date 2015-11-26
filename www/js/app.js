@@ -115,6 +115,16 @@ angular.module('me', [
     controller: 'AppCtrl'
   })
 
+  //purchase and sale
+  .state('app.purchaseAndSale', {
+    url: "/purchaseAndSale",
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/purchaseAndSale.html"
+      }
+    }
+  })
+  
   //MISCELLANEOUS
   .state('app.miscellaneous', {
     url: "/miscellaneous",
