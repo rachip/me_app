@@ -10,60 +10,79 @@
   
 <ion-content>
     <div class="list miscellaneous-functionalities">
-      <div dynamic-anchor-fix>
-        <a class="item item-icon-left item-icon-right" href="http://www.ionicthemes.com">
-          <i class="icon ion-ios-browsers-outline"></i>
-          <div>
-            <span class="title">In App Browser</span>
-            <p class="description">{{purchaseAndSale['PropertyName']}}</p>
-          </div>
-          <i class="icon ion-arrow-right-c"></i>
-        </a>
-      </div>
-      <a class="item item-icon-left item-icon-right" ui-sref="app.maps">
+      
+      <a class="item item-icon-left item-icon-right">
+        <i class="icon ion-ios-browsers-outline"></i>
+        <div>
+          <strong><span class="title text_type_bold">Property Name</span></strong>
+          <p class="description">{{purchaseAndSale['PropertyName']}}</p>
+        </div>
+      </a>
+     
+      <a class="item item-icon-left item-icon-right">
         <i class="icon ion-map"></i>
         <div>
-          <span class="title">Maps & GeoLocation</span>
-          <p class="description">Show map & access user's current location</p>
+          <strong><span class="title">Buyer Name</span></strong>
+          <p class="description">{{purchaseAndSale['BuyerName']}}</p>
         </div>
-        <i class="icon ion-arrow-right-c"></i>
       </a>
-      <a class="item item-icon-left item-icon-right" ui-sref="app.image-picker">
+      
+      <a class="item item-icon-left item-icon-right">
         <i class="icon ion-images"></i>
         <div>
-          <span class="title">Image Picker</span>
-          <p class="description">Select and share images from your phone</p>
+          <strong><span class="title">Is Funds In Escrow</span></strong>
+          <p class="description">{{purchaseAndSale['IsFundsInEscrow']}}</p>
         </div>
-        <i class="icon ion-arrow-right-c"></i>
       </a>
-      <a class="item item-icon-left item-icon-right" href="#" ng-controller="AdsCtrl" ng-click="manageAdMob()">
+      
+      <a class="item item-icon-left item-icon-right">
         <i class="icon ion-social-usd-outline"></i>
         <div>
-          <span class="title">AdMob</span>
-          <p class="description">Show Google AdMob mobile ads</p>
+          <strong><span class="title">Escrow Attorney</span></strong>
+          <p class="description">{{purchaseAndSale['EscrowAttorney']}}</p>
         </div>
       </a>
-      <a class="item item-icon-left item-icon-right" href="#" ng-controller="AdsCtrl" ng-click="manageiAd()">
+      
+      <a class="item item-icon-left item-icon-right">
         <i class="icon ion-social-usd-outline"></i>
         <div>
-          <span class="title">iAd</span>
-          <p class="description">Show Apple iAd mobile ads</p>
+          <strong><span class="title">Closign Date</span></strong>
+          <p class="description">{{purchaseAndSale['ClosignDate']}}</p>
         </div>
       </a>
-      <a class="item item-icon-left item-icon-right" href="#" ng-controller="RateApp" ng-click="rateApp()">
+      
+      <a class="item item-icon-left item-icon-right">
         <i class="icon ion-ios-star-half"></i>
         <div>
-          <span class="title">Rate the app</span>
-          <p class="description">Rate this app in Google and Apple stores</p>
+          <strong><span class="title">Layer Name</span></strong>
+          <p class="description">{{purchaseAndSale['LayerName']}}</p>
         </div>
       </a>
-      <a class="item item-icon-left item-icon-right" href="#" ng-controller="SendMailCtrl" ng-click="sendMail()">
+      
+      <a class="item item-icon-left item-icon-right">
         <i class="icon ion-email"></i>
         <div>
-          <span class="title">Send email</span>
-          <p class="description">Access your phone native email sender provider</p>
+          <strong><span class="title">Balance</span></strong>
+          <p class="description">{{purchaseAndSale['Balance']}}</p>
         </div>
       </a>
+      
+      <a class="item item-icon-left item-icon-right">
+        <i class="icon ion-email"></i>
+        <div>
+          <strong><span class="title">Closed</span>
+          <p class="description">{{purchaseAndSale['Closed']}}</p>
+        </div>
+      </a>
+      
+      <a class="item item-icon-left item-icon-right">
+        <i class="icon ion-email"></i>
+        <div>
+          <strong><span class="title">Note</span>
+          <p class="description"></p>
+        </div>
+      </a>
+      
     </div>
   </ion-content>
   

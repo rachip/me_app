@@ -464,27 +464,61 @@ angular.module('your_app_name.controllers', [])
 
 // PurchaseAndSaleCtrl
 .controller('PurchaseAndSaleCtrl', function($scope, $http, $ionicLoading) {
+	
+	$http({
+	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PurchaseAndSale', 
+	    method: "GET",
+	    params:  {index:2}, 
+	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+	}).then(function(resp) {
+		$scope.purchaseAndSale = resp.data[0];
+		
+		if($scope.purchaseAndSale['IsFundsInEscrow'] == 1)
+			$scope.purchaseAndSale['IsFundsInEscrow'] = "Yes";
+		else
+			$scope.purchaseAndSale['IsFundsInEscrow'] = "No";
+		
+		if($scope.purchaseAndSale['ShowNote'] == 1)
+			$scope.purchaseAndSale['Note'] = "zdfg";
+		
+		console.log($scope.purchaseAndSale['IsFundsInEscrow']);
+	}, function(err) {
+	    console.error('ERR', err);
+	})
+})
 
-$http({
-    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PurchaseAndSale', 
-    method: "GET",
-    params:  {index:2}, 
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
- }).then(function(resp) {
-    console.log(resp.data);
-   
-  $scope.purchaseAndSale = resp.data[0];
-
-
-
-
-  }, function(err) {
-    console.error('ERR', err);
-    // err.status will contain the status code
-  })
-
-
-
-});
+//ClosingCtrl
+.controller('ClosingCtrl', function($scope, $http, $ionicLoading) {
+	
+	$http({
+	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Closing', 
+	    method: "GET",
+	    params:  {index: 24}, 
+	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+	}).then(function(resp) {
+		$scope.closing = resp.data[0];
+		
+		if($scope.closing['PWFileOpen'] == 1)
+			$scope.closing['PWFileOpen'] = "Yes";
+		else
+			$scope.closing['PWFileOpen'] = "No";
+		
+		if($scope.closing['WalkThrogh'] == 1)
+			$scope.closing['WalkThrogh'] = "Yes";
+		else
+			$scope.closing['WalkThrogh'] = "No";
+		
+		if($scope.closing['Insurance'] == 1)
+			$scope.closing['Insurance'] = "Yes";
+		else
+			$scope.closing['Insurance'] = "No";
+		
+		if($scope.closing['ShowNote'] == 1)
+			$scope.closing['Note'] = "zdfg";
+		
+	}, function(err) {
+	    console.error('ERR', err);
+	})
+})
 
 

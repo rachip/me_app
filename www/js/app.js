@@ -126,6 +126,17 @@ angular.module('me', [
     }
   })
   
+  //closing
+  .state('app.closing', {
+    url: "/closing",
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/closing.html",
+        controller: 'ClosingCtrl'
+      }
+    }
+  })
+  
   //MISCELLANEOUS
   .state('app.miscellaneous', {
     url: "/miscellaneous",
