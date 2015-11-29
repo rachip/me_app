@@ -114,6 +114,16 @@ angular.module('me', [
     controller: 'AppCtrl'
   })
 
+    .state('app.properties', {
+    url: "/properties",
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/properties.html",
+        controller: 'PropertiesCtrl'
+      }
+    }
+  })
+
   //purchase and sale
   .state('app.purchaseAndSale', {
     url: "/purchaseAndSale",
@@ -182,5 +192,5 @@ angular.module('me', [
 ;
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/purchaseAndSale');
+  $urlRouterProvider.otherwise('/app/properties');
 });

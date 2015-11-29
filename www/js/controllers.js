@@ -78,6 +78,26 @@ angular.module('your_app_name.controllers', [])
 	};
 })
 
+//properties Ctrl
+.controller('PropertiesCtrl', function($scope, $http, $ionicLoading) {	
+	$http({
+	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PropertyImage', 
+	    method: "GET",
+	    params:  {index:9}, 
+	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+	}).then(function(resp) {
+
+		$scope.propertyImage = [];
+
+		console.log(resp.data);
+		$scope.propertyImage = resp.data;
+	
+		
+	}, function(err) {
+	    console.error('ERR', err);
+	})
+})
+
 // PurchaseAndSaleCtrl
 .controller('PurchaseAndSaleCtrl', function($scope, $http, $ionicLoading) {	
 	$http({
@@ -105,7 +125,7 @@ angular.module('your_app_name.controllers', [])
 	$http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Closing', 
 	    method: "GET",
-	    params:  {index: 24}, 
+	    params:  {index:24}, 
 	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 	}).then(function(resp) {
 		$scope.closing = resp.data[0];
@@ -126,7 +146,7 @@ angular.module('your_app_name.controllers', [])
 	$http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Renovation', 
 	    method: "GET",
-	    params:  {index: 3}, 
+	    params:  {index:3}, 
 	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 	}).then(function(resp) {
 		$scope.renovation = resp.data[0];
@@ -150,7 +170,7 @@ angular.module('your_app_name.controllers', [])
 	$http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Leasing', 
 	    method: "GET",
-	    params:  {index: 1}, 
+	    params:  {index:1}, 
 	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 	}).then(function(resp) {
 		$scope.leasing = resp.data[0];
@@ -170,7 +190,7 @@ angular.module('your_app_name.controllers', [])
 	$http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Occupied', 
 	    method: "GET",
-	    params:  {index: 1}, 
+	    params:  {index:1}, 
 	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 	}).then(function(resp) {
 		$scope.occupied = resp.data[0];
@@ -185,17 +205,23 @@ angular.module('your_app_name.controllers', [])
 })
 
 //EvictionCtrl
-.controller('EvictionCtrl', function($scope, $http, $ionicLoading) {	
+.controller('EvictionCtrl', function($scope, $timeout, $http, $ionicLoading) {
 	$http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Eviction', 
 	    method: "GET",
-	    params:  {index: 1}, 
+	    params:  {index:1}, 
 	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 	}).then(function(resp) {
-		$scope.eviction = resp.data[0];
-		
-		$scope.IsHasFile = $scope.eviction['IsHasFile'] == 1 ? true : false;
-		$scope.showNote = $scope.eviction['ShowNote'] == 1 ? true : false;
+	$scope.eviction = resp.data[0];
+
+	$scope.IsHasFile = $scope.eviction['IsHasFile'] == 1 ? true : false;
+	$scope.showNote = $scope.eviction['ShowNote'] == 1 ? true : false;
+
+
+
+	
+
+
 	
 	}, function(err) {
 	    console.error('ERR', err);

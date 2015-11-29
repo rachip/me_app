@@ -1,0 +1,20 @@
+<ion-view class="feeds-categories-view">
+  <ion-nav-title>
+    <span>Your Properties</span>
+  </ion-nav-title>
+  <ion-content>
+    <div class="row categories-list">
+
+      <div ng-repeat="propertyImage_item in propertyImage" class="col col-50">
+
+        <a class="feed-category" ui-sref="app.category-feeds({categoryId: (category.title | slugify)})">
+          <pre-img ratio="_1_1" helper-class="square-image">
+            <img class="category-image" ng-src="http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/uploads/{{propertyImage_item.FileName}}" spinner-on-load>
+          </pre-img>
+          <div class="category-bg"></div>
+          <span class="category-title">{{propertyImage_item.PropertyName}}</span>
+        </a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
