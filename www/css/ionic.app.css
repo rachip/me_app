@@ -7687,7 +7687,7 @@ a.button {
   color: #444444; }
 
 .bar.app-top-bar {
-  background-color: #FF4C4C; }
+  background-color: rgba(56, 126, 245, 0.8); }
   .bar.app-top-bar .title {
     color: #FFFFFF !important; }
     .bar.app-top-bar .title * {
@@ -8308,11 +8308,52 @@ ion-side-menu .heading-item .message {
 .post-view .post-author {
   font-weight: 500; }
 
-.layouts-view .layouts-functionalities .item .icon:first-child {
-  color: #FF4C4C; }
-.layouts-view .layouts-functionalities .item .title {
+/*purchaseAndSale*/
+.purchaseAndSales-view .purchaseAndSales-functionalities .item .icon:first-child {
+  color: rgba(56, 126, 245, 0.8); }
+.purchaseAndSales-view .purchaseAndSales-functionalities .item .title {
   font-weight: 500; }
-.layouts-view .layouts-functionalities .item .description {
+.purchaseAndSales-view .purchaseAndSales-functionalities .item .description {
+  color: #919191; }
+
+/*closing*/
+.closing-view .closing-functionalities .item .icon:first-child {
+  color: rgba(56, 126, 245, 0.8); }
+.closing-view .closing-functionalities .item .title {
+  font-weight: 500; }
+.closing-view .closing-functionalities .item .description {
+  color: #919191; }
+
+/*renovation*/
+.renovation-view .renovation-functionalities .item .icon:first-child {
+  color: rgba(56, 126, 245, 0.8); }
+.renovation-view .renovation-functionalities .item .title {
+  font-weight: 500; }
+.renovation-view .renovation-functionalities .item .description {
+  color: #919191; }
+
+/*leasing*/
+.leasing-view .leasing-functionalities .item .icon:first-child {
+  color: rgba(56, 126, 245, 0.8); }
+.leasing-view .leasing-functionalities .item .title {
+  font-weight: 500; }
+.leasing-view .leasing-functionalities .item .description {
+  color: #919191; }
+  
+  /*occupied*/
+.occupied-view .occupied-functionalities .item .icon:first-child {
+  color: rgba(56, 126, 245, 0.8); }
+.occupied-view .occupied-functionalities .item .title {
+  font-weight: 500; }
+.occupied-view .occupied-functionalities .item .description {
+  color: #919191; }
+  
+  /*eviction*/
+.eviction-view .eviction-functionalities .item .icon:first-child {
+  color: rgba(56, 126, 245, 0.8); }
+.eviction-view .eviction-functionalities .item .title {
+  font-weight: 500; }
+.eviction-view .eviction-functionalities .item .description {
   color: #919191; }
 
 .slider-view {
@@ -8376,13 +8417,6 @@ ion-side-menu .heading-item .message {
     -webkit-transition: 0.2s opacity linear;
     transition: 0.2s opacity linear;
     opacity: 0; }
-
-.miscellaneous-view .miscellaneous-functionalities .item .icon:first-child {
-  color: #FF4C4C; }
-.miscellaneous-view .miscellaneous-functionalities .item .title {
-  font-weight: 500; }
-.miscellaneous-view .miscellaneous-functionalities .item .description {
-  color: #919191; }
 
 .maps-view {
   background-color: #EAEAEA !important; }
