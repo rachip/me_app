@@ -73,7 +73,6 @@ angular.module('me', [
 
 })
 
-
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   $stateProvider
 
@@ -137,168 +136,51 @@ angular.module('me', [
     }
   })
   
-  //MISCELLANEOUS
-  .state('app.miscellaneous', {
-    url: "/miscellaneous",
+   //renovation
+  .state('app.renovation', {
+    url: "/renovation",
     views: {
       'menuContent': {
-        templateUrl: "views/app/miscellaneous/miscellaneous.html"
+        templateUrl: "views/app/renovation.html",
+        controller: 'RenovationCtrl'
       }
     }
   })
-
-  .state('app.maps', {
-    url: "/miscellaneous/maps",
+  
+  //leasing
+  .state('app.leasing', {
+    url: "/leasing",
     views: {
       'menuContent': {
-        templateUrl: "views/app/miscellaneous/maps.html",
-        controller: 'MapsCtrl'
+        templateUrl: "views/app/leasing.html",
+        controller: 'LeasingCtrl'
       }
     }
   })
-
-  .state('app.image-picker', {
-    url: "/miscellaneous/image-picker",
+  
+  //occupied
+  .state('app.occupied', {
+    url: "/occupied",
     views: {
       'menuContent': {
-        templateUrl: "views/app/miscellaneous/image-picker.html",
-        controller: 'ImagePickerCtrl'
+        templateUrl: "views/app/occupied.html",
+        controller: 'OccupiedCtrl'
       }
     }
   })
-
-  //LAYOUTS
-  .state('app.layouts', {
-    url: "/layouts",
+  
+  //eviction
+  .state('app.eviction', {
+    url: "/eviction",
     views: {
       'menuContent': {
-        templateUrl: "views/app/layouts/layouts.html"
+        templateUrl: "views/app/eviction.html",
+        controller: 'EvictionCtrl'
       }
     }
   })
-
-  .state('app.tinder-cards', {
-    url: "/layouts/tinder-cards",
-    views: {
-      'menuContent': {
-        templateUrl: "views/app/layouts/tinder-cards.html",
-        controller: 'TinderCardsCtrl'
-      }
-    }
-  })
-
-  .state('app.slider', {
-    url: "/layouts/slider",
-    views: {
-      'menuContent': {
-        templateUrl: "views/app/layouts/slider.html"
-      }
-    }
-  })
-
-  //FEEDS
-  .state('app.feeds-categories', {
-    url: "/feeds-categories",
-    views: {
-      'menuContent': {
-        templateUrl: "views/app/feeds/feeds-categories.html",
-        controller: 'FeedsCategoriesCtrl'
-      }
-    }
-  })
-
-  .state('app.category-feeds', {
-    url: "/category-feeds/:categoryId",
-    views: {
-      'menuContent': {
-        templateUrl: "views/app/feeds/category-feeds.html",
-        controller: 'CategoryFeedsCtrl'
-      }
-    }
-  })
-
-  .state('app.feed-entries', {
-    url: "/feed-entries/:categoryId/:sourceId",
-    views: {
-      'menuContent': {
-        templateUrl: "views/app/feeds/feed-entries.html",
-        controller: 'FeedEntriesCtrl'
-      }
-    }
-  })
-
-  //WORDPRESS
-  .state('app.wordpress', {
-    url: "/wordpress",
-    views: {
-      'menuContent': {
-        templateUrl: "views/app/wordpress/wordpress.html",
-        controller: 'WordpressCtrl'
-      }
-    }
-  })
-
-  .state('app.post', {
-    url: "/wordpress/:postId",
-    views: {
-      'menuContent': {
-        templateUrl: "views/app/wordpress/wordpress_post.html",
-        controller: 'WordpressPostCtrl'
-      }
-    },
-    resolve: {
-      post_data: function(PostService, $ionicLoading, $stateParams) {
-        $ionicLoading.show({
-      		template: 'Loading post ...'
-      	});
-
-        var postId = $stateParams.postId;
-        return PostService.getPost(postId);
-      }
-    }
-  })
-
-  //OTHERS
-  .state('app.settings', {
-    url: "/settings",
-    views: {
-      'menuContent': {
-        templateUrl: "views/app/settings.html",
-        controller: 'SettingsCtrl'
-      }
-    }
-  })
-
-  .state('app.forms', {
-    url: "/forms",
-    views: {
-      'menuContent': {
-        templateUrl: "views/app/forms.html"
-      }
-    }
-  })
-
-  .state('app.profile', {
-    url: "/profile",
-    views: {
-      'menuContent': {
-        templateUrl: "views/app/profile.html"
-      }
-    }
-  })
-
-  .state('app.bookmarks', {
-    url: "/bookmarks",
-    views: {
-      'menuContent': {
-        templateUrl: "views/app/bookmarks.html",
-        controller: 'BookMarksCtrl'
-      }
-    }
-  })
-
 ;
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/auth/walkthrough');
+  $urlRouterProvider.otherwise('/app/purchaseAndSale');
 });
