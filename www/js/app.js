@@ -95,18 +95,6 @@ angular.module('me', [
     controller: 'LoginCtrl'
   })
 
-  .state('auth.signup', {
-    url: '/signup',
-    templateUrl: "views/auth/signup.html",
-    controller: 'SignupCtrl'
-  })
-
-  .state('auth.forgot-password', {
-    url: "/forgot-password",
-    templateUrl: "views/auth/forgot-password.html",
-    controller: 'ForgotPasswordCtrl'
-  })
-
   .state('app', {
     url: "/app",
     abstract: true,

@@ -11,40 +11,29 @@ angular.module('your_app_name.controllers', [])
 
 //LOGIN
 .controller('LoginCtrl', function($scope, $state, $templateCache, $q, $rootScope) {
-	$scope.doLogIn = function(){
-		$state.go('app.feeds-categories');
+	
+	$scope.doLogIn = function() {
+		console.log($scope.email);
+		/*$http({
+		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Login', 
+		    method: "GET",
+		    params:  {email:"app@gmail.com",
+		    	      password:123}, 
+		    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+		}).then(function(resp) {
+
+			$scope.propertyImage = [];
+
+			$scope.propertyImage = resp.data;
+		
+		}, function(err) {
+		    console.error('ERR', err);
+		})
+		
+		$state.go('app.properties');*/
 	};
+		
 
-	$scope.user = {};
-
-	$scope.user.email = "john@doe.com";
-	$scope.user.pin = "12345";
-
-	// We need this for the form validation
-	$scope.selected_tab = "";
-
-	$scope.$on('my-tabs-changed', function (event, data) {
-		$scope.selected_tab = data.title;
-	});
-
-})
-
-.controller('SignupCtrl', function($scope, $state) {
-	$scope.user = {};
-
-	$scope.user.email = "john@doe.com";
-
-	$scope.doSignUp = function(){
-		$state.go('app.feeds-categories');
-	};
-})
-
-.controller('ForgotPasswordCtrl', function($scope, $state) {
-	$scope.recoverPassword = function(){
-		$state.go('app.feeds-categories');
-	};
-
-	$scope.user = {};
 })
 
 .controller('RateApp', function($scope) {
