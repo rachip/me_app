@@ -79,7 +79,13 @@ angular.module('your_app_name.controllers', [])
 })
 
 //properties Ctrl
-.controller('PropertiesCtrl', function($scope, $http, $ionicLoading) {	
+.controller('PropertiesCtrl', function($scope, $http, $ionicLoading, $ionicSideMenuDelegate)  {
+
+	 $scope.toggleLeftSideMenu = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+
+
 	$http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PropertyImage', 
 	    method: "GET",
@@ -97,13 +103,22 @@ angular.module('your_app_name.controllers', [])
 })
 
 // PurchaseAndSaleCtrl
-.controller('PurchaseAndSaleCtrl', function($scope, $http, $ionicLoading) {	
+.controller('PurchaseAndSaleCtrl', function($scope, $http, $ionicLoading, $stateParams) {
+
+console.log("on ckick" + $stateParams.propertyId );	
 	$http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PurchaseAndSale', 
 	    method: "GET",
-	    params:  {index:2}, 
+	    params:  {index: $stateParams.propertyId}, 
 	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 	}).then(function(resp) {
+
+		
+
+		if (resp.data.length != 0) {
+
+		$scope.isHasData = true;
+
 		$scope.purchaseAndSale = resp.data[0];
 		
 		$scope.isHasFile = $scope.purchaseAndSale['IsHasFile'] == 1 ? true : false;
@@ -112,6 +127,18 @@ angular.module('your_app_name.controllers', [])
 		$scope.IsBalanceFile = $scope.purchaseAndSale['IsBalanceFile'] == 1 ? true : false;
 		$scope.IsFilesToS‌ign = $scope.purchaseAndSale['IsFilesToS‌ignFile'] == 1 ? true : false;
 		$scope.showNote = $scope.purchaseAndSale['ShowNote'] == 1 ? true : false;
+
+
+		}
+
+		else {
+
+		$scope.msg = "mo datat to display";
+
+		$scope.isHasData = false;
+
+
+		}
 		
 	}, function(err) {
 	    console.error('ERR', err);

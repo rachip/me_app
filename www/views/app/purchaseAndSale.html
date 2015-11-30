@@ -5,11 +5,11 @@
   </ion-nav-buttons>
  
   <ion-nav-title>
-    <span>{{propertyId}} Purchase And Sale</span>
+    <span> Purchase And Sale</span>
   </ion-nav-title>
   
-<ion-content>
-    <div class="list purchaseAndSales-functionalities">
+<ion-content >
+    <div class="list purchaseAndSales-functionalities" ng-show="isHasData">
       
       <div class="item item-icon-left item-icon-right">
         <i class="icon ion-ios-browsers-outline"></i>
@@ -107,6 +107,26 @@
       </div>
       
     </div>
+
+ <div class="" ng-hide="isHasData">
+
+  <div class="card">
+  <div class="item item-divider">
+
+  </div>
+  <div class="item item-text-wrap">
+     {{msg}}
+  </div>
+  <div class="item item-divider">
+
+  </div>
+</div>
+
+
+
+
+ </div>
+
   </ion-content>
   
 </ion-view>

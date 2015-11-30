@@ -126,7 +126,7 @@ angular.module('me', [
 
   //purchase and sale
   .state('app.purchaseAndSale', {
-    url: "/purchaseAndSale",
+    url: "/purchaseAndSale/:propertyId",
     views: {
       'menuContent': {
         templateUrl: "views/app/purchaseAndSale.html",

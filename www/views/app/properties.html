@@ -7,7 +7,7 @@
 
       <div ng-repeat="propertyImage_item in propertyImage" class="col col-50">
 
-        <a class="feed-category" ui-sref="app.purchaseAndSale({propertyId: 1})">
+        <a class="feed-category" ng-click="toggleLeftSideMenu()">
           <pre-img ratio="_1_1" helper-class="square-image">
             <img class="category-image" ng-src="http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/uploads/{{propertyImage_item.FileName}}" spinner-on-load>
           </pre-img>
