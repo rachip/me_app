@@ -89,10 +89,8 @@ angular.module('your_app_name.controllers', [])
 
 		$scope.propertyImage = [];
 
-		console.log(resp.data);
 		$scope.propertyImage = resp.data;
 	
-		
 	}, function(err) {
 	    console.error('ERR', err);
 	})
@@ -112,7 +110,7 @@ angular.module('your_app_name.controllers', [])
 		$scope.IsBuyerFile = $scope.purchaseAndSale['IsBuyerFile'] == 1 ? true : false;
 		$scope.IsSignedDocsFile = $scope.purchaseAndSale['IsSignedDocsFile'] == 1 ? true : false;
 		$scope.IsBalanceFile = $scope.purchaseAndSale['IsBalanceFile'] == 1 ? true : false;
-		$scope.IsFilesToS‌ignFile = $scope.purchaseAndSale['IsFilesToS‌ignFile'] == 1 ? true : false;
+		$scope.IsFilesToS‌ign = $scope.purchaseAndSale['IsFilesToS‌ignFile'] == 1 ? true : false;
 		$scope.showNote = $scope.purchaseAndSale['ShowNote'] == 1 ? true : false;
 		
 	}, function(err) {
@@ -217,12 +215,6 @@ angular.module('your_app_name.controllers', [])
 	$scope.IsHasFile = $scope.eviction['IsHasFile'] == 1 ? true : false;
 	$scope.showNote = $scope.eviction['ShowNote'] == 1 ? true : false;
 
-
-
-	
-
-
-	
 	}, function(err) {
 	    console.error('ERR', err);
 	})

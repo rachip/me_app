@@ -5,13 +5,13 @@
   </ion-nav-buttons>
  
   <ion-nav-title>
-    <span>Purchase And Sale</span>
+    <span>{{propertyId}} Purchase And Sale</span>
   </ion-nav-title>
   
 <ion-content>
     <div class="list purchaseAndSales-functionalities">
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-ios-browsers-outline"></i>
         <div>
           <strong><span class="title text_type_bold">Property Name</span></strong>
@@ -20,18 +20,18 @@
           </p>
          	<i ng-show="isHasFile" class="icon ion-android-document"></i>         
         </div>        
-      </a>
+      </div>
      
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-map"></i>
         <div>
           <strong><span class="title">Buyer Name</span></strong>
           <p class="description">{{purchaseAndSale['BuyerName']}}</p>
           <i ng-show="IsBuyerFile" class="icon ion-android-document"></i>         
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-images"></i>
         <div>
           <strong><span class="title">Is Funds In Escrow</span></strong>
@@ -39,72 +39,72 @@
           	{{purchaseAndSale['IsFundsInEscrow'] == 1 ? "Yes" : "No"}}
           </p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-social-usd-outline"></i>
         <div>
           <strong><span class="title">Escrow Attorney</span></strong>
           <p class="description">{{purchaseAndSale['EscrowAttorney']}}</p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-social-usd-outline"></i>
         <div>
           <strong><span class="title">Closign Date</span></strong>
           <p class="description">{{purchaseAndSale['ClosignDate']}}</p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-ios-star-half"></i>
         <div>
           <strong><span class="title">Layer Name</span></strong>
           <p class="description">{{purchaseAndSale['LayerName']}}</p>
         </div>
-      </a>
+      </div>
       
-      <a ng-show="IsSignedDocsFile" class="item item-icon-left item-icon-right">
+      <div ng-show="IsSignedDocsFile" class="item item-icon-left item-icon-right">
         <i class="icon ion-ios-star-half"></i>
         <div>
           <strong><span class="title">Signed Docs</span></strong>
            <i class="icon ion-android-document"></i>         
         </div>
-      </a>
+      </div>
     
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-email"></i>
         <div>
           <strong><span class="title">Balance</span></strong>
           <p class="description">{{purchaseAndSale['Balance']}}</p>
           <i ng-show="IsBalanceFile" class="icon ion-android-document"></i>         
         </div>
-      </a>
+      </div>
       
-      <div ng-show="IsFilesToS‌ignFile" class="item item-icon-left item-icon-right">
+      <div ng-show="IsFilesToS‌ign" class="item item-icon-left item-icon-right">
         <i class="icon ion-ios-star-half"></i>
         <div>
           <strong><span class="title">Files To S‌ign</span></strong>
-           <i class="icon ion-android-document"></i>         
+          <i class="icon ion-android-document"></i>         
         </div>
       </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-email"></i>
         <div>
           <strong><span class="title">Closed</span></strong>
           <p class="description">{{purchaseAndSale['Closed']}}</p>
         </div>
-      </a>
+      </div>
       
-      <a ng-show="showNote" class="item item-icon-left item-icon-right">
+      <div ng-show="showNote" class="item item-icon-left item-icon-right">
         <i class="icon ion-email"></i>
         <div>
           <strong><span class="title">Note</span></strong>
           <p class="description">{{purchaseAndSale['Note']}}</p>
         </div>
-      </a>
+      </div>
       
     </div>
   </ion-content>

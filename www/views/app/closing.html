@@ -11,16 +11,16 @@
 <ion-content>
     <div class="list closing-functionalities">
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-ios-browsers-outline"></i>
         <div>
           <strong><span class="title text_type_bold">Property Name</span></strong>
           <p class="description">{{closing['PropertyName']}}</p>
           <i ng-show="isHasFile" class="icon ion-android-document"></i>         
         </div>
-      </a>
+      </div>
      
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-map"></i>
         <div>
           <strong><span class="title">PW File Open</span></strong>
@@ -28,9 +28,9 @@
           	{{closing['PWFileOpen'] == 1 ? "Yes" : "No"}}
           </p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-images"></i>
         <div>
           <strong><span class="title">Walk Throgh</span></strong>
@@ -39,9 +39,9 @@
           </p>
           <i ng-show="IsWalkThroghFile" class="icon ion-android-document"></i>         
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-social-usd-outline"></i>
         <div>
           <strong><span class="title">Insurance</span></strong>
@@ -50,24 +50,24 @@
           </p>
           <i ng-show="IsInsuranceFile" class="icon ion-android-document"></i>
         </div>
-      </a>
+      </div>
     	
-      <a ng-show="IsClosingDocsFile" class="item item-icon-left item-icon-right">
+      <div ng-show="IsClosingDocsFile" class="item item-icon-left item-icon-right">
         <i class="icon ion-ios-star-half"></i>
         <div>
           <strong><span class="title">Closing Docs</span></strong>
           <p class="description"></p>
           <i class="icon ion-android-document"></i>         
         </div>
-      </a>
+      </div>
     
-      <a ng-show="showNote" class="item item-icon-left item-icon-right">
+      <div ng-show="showNote" class="item item-icon-left item-icon-right">
         <i class="icon ion-email"></i>
         <div>
           <strong><span class="title">Note</span></strong>
           <p class="description">{{closing['Note']}}</p>
         </div>
-      </a>
+      </div>
       
     </div>
   </ion-content>

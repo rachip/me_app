@@ -11,57 +11,57 @@
 <ion-content>
     <div class="list occupied-functionalities">
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-ios-browsers-outline"></i>
         <div>
           <strong><span class="title text_type_bold">Property Name</span></strong>
           <p class="description">{{occupied['PropertyName']}}</p>
           <i ng-show="IsHasFile" class="icon ion-android-document"></i>
         </div>
-      </a>
+      </div>
      
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-map"></i>
         <div>
           <strong><span class="title">Portion</span></strong>
           <p class="description">{{occupied['Portion']}}</p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-images"></i>
         <div>
           <strong><span class="title">Tenants Portion</span></strong>
           <p class="description">{{occupied['TenantsPortion']}}</p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-social-usd-outline"></i>
         <div>
           <strong><span class="title">Payment Status</span></strong>
           <p class="description">{{occupied['PaymentStatus']}}</p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-social-usd-outline"></i>
         <div>
           <strong><span class="title">Outstanding Balance</span></strong>
           <p class="description">{{occupied['OutstandingBalance']}}</p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-ios-star-half"></i>
         <div>
           <strong><span class="title">Maintanence</span></strong>
           <p class="description">{{occupied['Maintanence']}}</p>
           <i ng-show="IsMaintanenceFile" class="icon ion-android-document"></i>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-email"></i>
         <div>
           <strong><span class="title">Eviction</span></strong>
@@ -69,39 +69,39 @@
           	{{occupied['Eviction'] == 1 ? "Yes" : "No"}}
           </p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-email"></i>
         <div>
           <strong><span class="title">Eviction Date</span></strong>
           <p class="description">{{occupied['EvictionDate']}}</p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-email"></i>
         <div>
           <strong><span class="title">Eviction Note</span></strong>
           <p class="description">{{occupied['EvictionNote']}}</p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-email"></i>
         <div>
           <strong><span class="title">Going To Be Vacent</span></strong>
           <p class="description">{{occupied['GoingToBeVacent']}}</p>
         </div>
-      </a>
+      </div>
       
-      <a ng-show="showNote" class="item item-icon-left item-icon-right">
+      <div ng-show="showNote" class="item item-icon-left item-icon-right">
         <i class="icon ion-email"></i>
         <div>
           <strong><span class="title">Note</span></strong>
           <p class="description">{{occupied['Note']}}</p>
         </div>
-      </a>
+      </div>
       
     </div>
   </ion-content>

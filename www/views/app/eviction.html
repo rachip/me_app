@@ -11,24 +11,24 @@
 <ion-content>
     <div class="list eviction-functionalities">
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-ios-browsers-outline"></i>
         <div>
           <strong><span class="title text_type_bold">Property Name</span></strong>
           <p class="description">{{eviction['PropertyName']}}</p>
           <i ng-show="IsHasFile" class="icon ion-android-document"></i>
         </div>
-      </a>
+      </div>
      
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-map"></i>
         <div>
           <strong><span class="title">Tenant Name</span></strong>
           <p class="description">{{eviction['TenantName']}}</p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-images"></i>
         <div>
           <strong><span class="title">Filed</span></strong>
@@ -36,9 +36,9 @@
           	{{eviction['Filed'] == 1 ? "Yes" : "No"}}
           </p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-social-usd-outline"></i>
         <div>
           <strong><span class="title">Published</span></strong>
@@ -46,9 +46,9 @@
           	{{eviction['Published'] == 1 ? "Yes" : "No"}}
           </p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-social-usd-outline"></i>
         <div>
           <strong><span class="title">Is Court Date</span></strong>
@@ -56,25 +56,25 @@
           	{{eviction['IsCourtDate'] == 1 ? "Yes" : "No"}}
           </p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-ios-star-half"></i>
         <div>
           <strong><span class="title">Court Date</span></strong>
           <p class="description">{{eviction['CourtDate']}}</p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-email"></i>
         <div>
           <strong><span class="title">Outcome And Status</span></strong>
           <p class="description">{{eviction['OutcomeAndStatus']}}</p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-email"></i>
         <div>
           <strong><span class="title">Is Removed</span></strong>
@@ -82,23 +82,23 @@
           	{{eviction['IsRemoved'] == 1 ? "Yes" : "No"}}
           </p>
         </div>
-      </a>
+      </div>
       
-      <a class="item item-icon-left item-icon-right">
+      <div class="item item-icon-left item-icon-right">
         <i class="icon ion-email"></i>
         <div>
           <strong><span class="title">Removed Date</span></strong>
           <p class="description">{{eviction['RemovedDate']}}</p>
         </div>
-      </a>
+      </div>
       
-      <a ng-show="showNote" class="item item-icon-left item-icon-right">
+      <div ng-show="showNote" class="item item-icon-left item-icon-right">
         <i class="icon ion-email"></i>
         <div>
           <strong><span class="title">Note</span></strong>
           <p class="description">{{eviction['Note']}}</p>
         </div>
-      </a>
+      </div>
       
     </div>
   </ion-content>
