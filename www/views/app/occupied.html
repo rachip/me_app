@@ -9,7 +9,7 @@
   </ion-nav-title>
   
 <ion-content>
-    <div class="list occupied-functionalities">
+    <div  ng-show="isHasData" class="list occupied-functionalities">
       
       <div class="item item-icon-left item-icon-right">
         <i class="icon ion-ios-browsers-outline"></i>
@@ -104,6 +104,18 @@
       </div>
       
     </div>
+    
+    <div ng-hide="isHasData">
+		<div class="card">
+			<div class="item item-divider">
+		    </div>
+		    <div class="item item-text-wrap">
+		    	{{msg}}
+		    </div>
+		    <div class="item item-divider">
+		    </div>
+		</div>
+	</div>
   </ion-content>
   
 </ion-view>
