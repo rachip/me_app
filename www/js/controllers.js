@@ -10,36 +10,25 @@ angular.module('your_app_name.controllers', [])
 })
 
 //LOGIN
-.controller('LoginCtrl', function($scope, $state, $templateCache, $q, $rootScope) {
+.controller('LoginCtrl', function($scope, $http, $state, $templateCache, $q, $rootScope) {
+	$scope.submit = function() {
+    	var email = this.login_form.user_email.$viewValue;
+        var psw = this.login_form.user_password.$viewValue;
+        $http({
+	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Login', 
+	    method: "POST",
+	    data:  {email:email,
+	    		  password: psw}, 
+	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+	    
+	}).then(function(resp) {
 
-   $scope.sendEmail =  $scope.login_form.user_email.$rollbackViewValue();
-   console.log($scope.sendEmail);
+		console.log(resp);
 	
-	$scope.doLogIn = function() {
-
- 
-
-		console.log($scope.email);
-		/*$http({
-		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Login', 
-		    method: "GET",
-		    params:  {email:"app@gmail.com",
-		    	      password:123}, 
-		    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-		}).then(function(resp) {
-
-			$scope.propertyImage = [];
-
-			$scope.propertyImage = resp.data;
-		
-		}, function(err) {
-		    console.error('ERR', err);
-		})
-		
-		$state.go('app.properties');*/
-	};
-		
-
+	}, function(err) {
+	    console.error('ERR', err);
+	})
+    };
 })
 
 .controller('RateApp', function($scope) {
