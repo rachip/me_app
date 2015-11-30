@@ -11,8 +11,14 @@ angular.module('your_app_name.controllers', [])
 
 //LOGIN
 .controller('LoginCtrl', function($scope, $state, $templateCache, $q, $rootScope) {
+
+   $scope.sendEmail =  $scope.login_form.user_email.$rollbackViewValue();
+   console.log($scope.sendEmail);
 	
 	$scope.doLogIn = function() {
+
+ 
+
 		console.log($scope.email);
 		/*$http({
 		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Login', 
