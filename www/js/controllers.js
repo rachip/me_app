@@ -14,11 +14,12 @@ angular.module('your_app_name.controllers', [])
 	$scope.submit = function() {
     	var email = this.login_form.user_email.$viewValue;
         var psw = this.login_form.user_password.$viewValue;
+       
         $http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Login', 
 	    method: "POST",
-	    data:  {email:email,
-	    		  password: psw}, 
+	    data:  {mail:email,
+	    	    password:psw}, 
 	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 	    
 	}).then(function(resp) {
