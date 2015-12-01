@@ -1,3 +1,5 @@
+var loginUserType;
+
 angular.module('your_app_name.controllers', [])
 
 .controller('AuthCtrl', function($scope, $ionicConfig) {
@@ -10,7 +12,7 @@ angular.module('your_app_name.controllers', [])
 })
 
 //LOGIN
-.controller('LoginCtrl', function($scope, $http, $state, $templateCache, $q, $rootScope) {
+.controller('LoginCtrl', function($scope, $http, $state, $templateCache, $location) {
 	$scope.submit = function() {
     	var email = this.login_form.user_email.$viewValue;
         var psw = this.login_form.user_password.$viewValue;
@@ -23,8 +25,23 @@ angular.module('your_app_name.controllers', [])
 	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 	    
 	}).then(function(resp) {
-
-		console.log(resp);
+		if(resp.data == "false") {
+			$scope.msg = "The Email or Password incorrect";
+		}
+		else {
+			localStorage.setItem("loginUserType", resp.data["Type"]);
+			if(resp.data["Type"] == "user") {
+				loginUserType = "user";
+				localStorage.setItem("id", resp.data["UserId"]);
+				localStorage.setItem("isAdmin", resp.data["IsAdmin"]);
+				localStorage.setItem("branch", resp.data["BranchId"]);
+			}
+			else {
+				loginUserType = "client";
+				localStorage.setItem("id", resp.data["ClientId"]);
+			}
+			$location.path( "/app/properties" );
+		}
 	
 	}, function(err) {
 	    console.error('ERR', err);
@@ -46,30 +63,12 @@ angular.module('your_app_name.controllers', [])
 	};
 })
 
-.controller('SendMailCtrl', function($scope) {
-	$scope.sendMail = function(){
-		cordova.plugins.email.isAvailable(
-			function (isAvailable) {
-				// alert('Service is not available') unless isAvailable;
-				cordova.plugins.email.open({
-					to:      'envato@startapplabs.com',
-					cc:      'hello@startapplabs.com',
-					// bcc:     ['john@doe.com', 'jane@doe.com'],
-					subject: 'Greetings',
-					body:    'How are you? Nice greetings from IonFullApp'
-				});
-			}
-		);
-	};
-})
-
 //properties Ctrl
 .controller('PropertiesCtrl', function($scope, $http, $ionicLoading, $ionicSideMenuDelegate)  {
 
 	 $scope.toggleLeftSideMenu = function() {
-    $ionicSideMenuDelegate.toggleLeft();
-  };
-
+		 $ionicSideMenuDelegate.toggleLeft();
+     };
 
 	$http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PropertyImage', 
