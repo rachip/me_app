@@ -1,4 +1,5 @@
 var loginUserType;
+var propertyId;
 
 angular.module('your_app_name.controllers', [])
 
@@ -8,7 +9,6 @@ angular.module('your_app_name.controllers', [])
 
 // APP
 .controller('AppCtrl', function($scope, $ionicConfig) {
-
 })
 
 //LOGIN
@@ -66,7 +66,8 @@ angular.module('your_app_name.controllers', [])
 //properties Ctrl
 .controller('PropertiesCtrl', function($scope, $http, $ionicLoading, $ionicSideMenuDelegate)  {
 	
-	$scope.toggleLeftSideMenu = function() {
+	$scope.toggleLeftSideMenu = function(id) {
+		propertyId = id;
 		$ionicSideMenuDelegate.toggleLeft();
     };
 
@@ -106,11 +107,10 @@ angular.module('your_app_name.controllers', [])
 // PurchaseAndSaleCtrl
 .controller('PurchaseAndSaleCtrl', function($scope, $http, $ionicLoading, $stateParams) {
 
-console.log("on ckick" + $stateParams.propertyId );	
 	$http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PurchaseAndSale', 
 	    method: "GET",
-	    params:  {index: $stateParams.propertyId}, 
+	    params:  {index: propertyId}, 
 	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 	}).then(function(resp) {
 		if (resp.data.length != 0) {
@@ -139,7 +139,7 @@ console.log("on ckick" + $stateParams.propertyId );
 	$http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Closing', 
 	    method: "GET",
-	    params:  {index:24}, 
+	    params:  {index:propertyId}, 
 	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 	}).then(function(resp) {
 		if (resp.data.length != 0) {
@@ -167,7 +167,7 @@ console.log("on ckick" + $stateParams.propertyId );
 	$http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Renovation', 
 	    method: "GET",
-	    params:  {index:3}, 
+	    params:  {index:propertyId}, 
 	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 	}).then(function(resp) {
 		if (resp.data.length != 0) {
@@ -198,7 +198,7 @@ console.log("on ckick" + $stateParams.propertyId );
 	$http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Leasing', 
 	    method: "GET",
-	    params:  {index:1}, 
+	    params:  {index:propertyId}, 
 	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 	}).then(function(resp) {
 		if (resp.data.length != 0) {
@@ -225,7 +225,7 @@ console.log("on ckick" + $stateParams.propertyId );
 	$http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Occupied', 
 	    method: "GET",
-	    params:  {index:1}, 
+	    params:  {index:propertyId}, 
 	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 	}).then(function(resp) {
 		if (resp.data.length != 0) {
@@ -251,7 +251,7 @@ console.log("on ckick" + $stateParams.propertyId );
 	$http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Eviction', 
 	    method: "GET",
-	    params:  {index:1}, 
+	    params:  {index:propertyId}, 
 	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 	}).then(function(resp) {
 		if (resp.data.length != 0) {
@@ -270,5 +270,3 @@ console.log("on ckick" + $stateParams.propertyId );
 	    console.error('ERR', err);
 	})
 })
-
-

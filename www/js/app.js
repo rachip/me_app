@@ -84,11 +84,6 @@ angular.module('me', [
     controller: 'AuthCtrl'
   })
 
-  .state('auth.walkthrough', {
-    url: '/walkthrough',
-    templateUrl: "views/auth/walkthrough.html"
-  })
-
   .state('auth.login', {
     url: '/login',
     templateUrl: "views/auth/login.html",
@@ -102,7 +97,8 @@ angular.module('me', [
     controller: 'AppCtrl'
   })
 
-    .state('app.properties', {
+  //properties
+  .state('app.properties', {
     url: "/properties",
     views: {
       'menuContent': {
