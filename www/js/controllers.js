@@ -65,15 +65,32 @@ angular.module('your_app_name.controllers', [])
 
 //properties Ctrl
 .controller('PropertiesCtrl', function($scope, $http, $ionicLoading, $ionicSideMenuDelegate)  {
+	
+	$scope.toggleLeftSideMenu = function() {
+		$ionicSideMenuDelegate.toggleLeft();
+    };
 
-	 $scope.toggleLeftSideMenu = function() {
-		 $ionicSideMenuDelegate.toggleLeft();
-     };
-
+    var url;
+    var id;
+    if(loginUserType == "client") {    	
+    	url = 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PropertyImage';
+    	id = localStorage.getItem('id');
+    }
+    else {
+    	if(localStorage.getItem('isAdmin') == 1) {    		
+    		url = 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PropertyImage/getAdminPropertyImage';
+    		id = 0;
+    	}
+    	else {
+    		url = 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PropertyImage/getUserPropertyImage';
+    		id = localStorage.getItem('branch');
+    	}
+    }
+    
 	$http({
-	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PropertyImage', 
+	    url: url, 
 	    method: "GET",
-	    params:  {index:9}, 
+	    params:  {index:id}, 
 	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 	}).then(function(resp) {
 
