@@ -1,5 +1,6 @@
 var loginUserType;
 var propertyId;
+var propertyImageId;
 
 angular.module('your_app_name.controllers', [])
 
@@ -8,7 +9,11 @@ angular.module('your_app_name.controllers', [])
 })
 
 // APP
-.controller('AppCtrl', function($scope, $ionicConfig) {
+.controller('AppCtrl', function($scope, $ionicConfig, $rootScope) {
+	$scope.$on( "aaa", function(event, data) {
+		$scope.msg = data.name;
+		$scope.url = data.url;
+	});
 })
 
 //LOGIN
@@ -64,13 +69,14 @@ angular.module('your_app_name.controllers', [])
 })
 
 //properties Ctrl
-.controller('PropertiesCtrl', function($scope, $http, $ionicLoading, $ionicSideMenuDelegate)  {
+.controller('PropertiesCtrl', function($scope, $http, $ionicLoading, $ionicSideMenuDelegate, $rootScope)  {
 	
-	$scope.toggleLeftSideMenu = function(id) {
+	$scope.toggleLeftSideMenu = function(id, name, url) {		
+		var unbind = $rootScope.$broadcast( "aaa", {name:name, url:url} );		
 		propertyId = id;
 		$ionicSideMenuDelegate.toggleLeft();
     };
-
+    
     var url;
     var id;
     if(loginUserType == "client") {    	
