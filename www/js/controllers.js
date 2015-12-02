@@ -13,8 +13,6 @@ angular.module('your_app_name.controllers', [])
 
 	$scope.currentPath = $location.path();
 
-	console.log($scope.currentPath);
-
 	$scope.$on( "aaa", function(event, data) {
 		$scope.msg = data.name;
 		$scope.url = data.url;
