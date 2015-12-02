@@ -8,7 +8,7 @@
         </button>
       </ion-nav-buttons>
        <ion-nav-buttons side="right">
-       <button class="button button-icon button-clear updateMeBth" ng-hide="currentPath == '/app/properties'">Update Me</button>
+       <button class="button button-icon updateMeBth" ng-click="updateMe()">Update Me</button>
         </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
@@ -25,27 +25,27 @@
           </div>
           <h2 class="greeting">{{msg}}</h2>
         </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.purchaseAndSale">
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.PurchasesAndSales">
           <i class="icon ion-android-list"></i>
           <h2 class="menu-text">Purchases And Sales</h2>
         </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.closing">
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.Closing">
           <i class="icon ion-arrow-graph-down-right"></i>
           <h2 class="menu-text">Closing</h2>
         </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.renovation">
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.Renovations">
           <i class="icon ion-settings"></i>
           <h2 class="menu-text">Renovation</h2>
         </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.leasing">
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.Leasing">
           <i class="icon ion-wand"></i>
           <h2 class="menu-text">Leasing</h2>
         </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.occupied">
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.OccupiedProperty">
           <i class="icon ion-asterisk"></i>
           <h2 class="menu-text">Occupied Property</h2>
         </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.eviction">
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.Evictions">
           <i class="icon ion-android-exit"></i>
           <h2 class="menu-text">Eviction</h2>
         </ion-item>

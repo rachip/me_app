@@ -9,7 +9,7 @@ angular.module('your_app_name.controllers', [])
 })
 
 // APP
-.controller('AppCtrl', function($scope, $location, $ionicConfig, $rootScope) {
+.controller('AppCtrl', function($scope, $location, $ionicConfig, $rootScope, $http) {
 
 	$scope.currentPath = $location.path();
 
@@ -17,6 +17,27 @@ angular.module('your_app_name.controllers', [])
 		$scope.msg = data.name;
 		$scope.url = data.url;
 	});
+	
+	$scope.updateMe = function() {
+		var str = $location.path();
+		var arr = str.split("/app/");
+		    
+		console.log(arr[1]);
+		console.log($rootScope.propertyId);
+		$http({
+		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/RequestUpdate', 
+		    method: "POST",
+		    data:  {id:$rootScope.propertyId,
+		    	    table:arr[1]}, 
+		    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+		    
+		}).then(function(resp) {
+			console.log(resp.data);
+			
+		}, function(err) {
+		    console.error('ERR', err);
+		})
+	};
 })
 
 //LOGIN
@@ -25,7 +46,7 @@ angular.module('your_app_name.controllers', [])
     	var email = this.login_form.user_email.$viewValue;
         var psw = this.login_form.user_password.$viewValue;
        
-        $http({
+    $http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Login', 
 	    method: "POST",
 	    data:  {mail:email,

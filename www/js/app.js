@@ -109,8 +109,8 @@ angular.module('me', [
   })
 
   //purchase and sale
-  .state('app.purchaseAndSale', {
-    url: "/purchaseAndSale/:propertyId",
+  .state('app.PurchasesAndSales', {
+    url: "/PurchasesAndSales",
     views: {
       'menuContent': {
         templateUrl: "views/app/purchaseAndSale.html",
@@ -120,8 +120,8 @@ angular.module('me', [
   })
   
   //closing
-  .state('app.closing', {
-    url: "/closing",
+  .state('app.Closing', {
+    url: "/Closing",
     views: {
       'menuContent': {
         templateUrl: "views/app/closing.html",
@@ -131,8 +131,8 @@ angular.module('me', [
   })
   
    //renovation
-  .state('app.renovation', {
-    url: "/renovation",
+  .state('app.Renovations', {
+    url: "/Renovations",
     views: {
       'menuContent': {
         templateUrl: "views/app/renovation.html",
@@ -142,8 +142,8 @@ angular.module('me', [
   })
   
   //leasing
-  .state('app.leasing', {
-    url: "/leasing",
+  .state('app.Leasing', {
+    url: "/Leasing",
     views: {
       'menuContent': {
         templateUrl: "views/app/leasing.html",
@@ -153,8 +153,8 @@ angular.module('me', [
   })
   
   //occupied
-  .state('app.occupied', {
-    url: "/occupied",
+  .state('app.OccupiedProperty', {
+    url: "/OccupiedProperty",
     views: {
       'menuContent': {
         templateUrl: "views/app/occupied.html",
@@ -164,8 +164,8 @@ angular.module('me', [
   })
   
   //eviction
-  .state('app.eviction', {
-    url: "/eviction",
+  .state('app.Evictions', {
+    url: "/Evictions",
     views: {
       'menuContent': {
         templateUrl: "views/app/eviction.html",
