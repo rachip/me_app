@@ -8318,7 +8318,9 @@ ion-side-menu .heading-item .message {
 .purchaseAndSales-view .purchaseAndSales-functionalities .item .title {
   font-weight: 500; }
 .purchaseAndSales-view .purchaseAndSales-functionalities .item .description {
-  color: #919191; }
+  color: #919191;
+  overflow: initial;
+  white-space: initial; }
 
 /*closing*/
 .closing-view .closing-functionalities .item .icon:first-child {
@@ -8326,7 +8328,9 @@ ion-side-menu .heading-item .message {
 .closing-view .closing-functionalities .item .title {
   font-weight: 500; }
 .closing-view .closing-functionalities .item .description {
-  color: #919191; }
+  color: #919191;
+  overflow: initial;
+  white-space: initial; }
 
 /*renovation*/
 .renovation-view .renovation-functionalities .item .icon:first-child {
@@ -8334,7 +8338,9 @@ ion-side-menu .heading-item .message {
 .renovation-view .renovation-functionalities .item .title {
   font-weight: 500; }
 .renovation-view .renovation-functionalities .item .description {
-  color: #919191; }
+  color: #919191;
+  overflow: initial;
+  white-space: initial; }
 
 /*leasing*/
 .leasing-view .leasing-functionalities .item .icon:first-child {
@@ -8342,7 +8348,9 @@ ion-side-menu .heading-item .message {
 .leasing-view .leasing-functionalities .item .title {
   font-weight: 500; }
 .leasing-view .leasing-functionalities .item .description {
-  color: #919191; }
+  color: #919191;
+  overflow: initial;
+  white-space: initial; }
   
   /*occupied*/
 .occupied-view .occupied-functionalities .item .icon:first-child {
@@ -8350,7 +8358,9 @@ ion-side-menu .heading-item .message {
 .occupied-view .occupied-functionalities .item .title {
   font-weight: 500; }
 .occupied-view .occupied-functionalities .item .description {
-  color: #919191; }
+  color: #919191;
+  overflow: initial;
+  white-space: initial; }
   
   /*eviction*/
 .eviction-view .eviction-functionalities .item .icon:first-child {
@@ -8358,7 +8368,9 @@ ion-side-menu .heading-item .message {
 .eviction-view .eviction-functionalities .item .title {
   font-weight: 500; }
 .eviction-view .eviction-functionalities .item .description {
-  color: #919191; }
+  color: #919191;
+  overflow: initial;
+  white-space: initial; }
 
 .slider-view {
   background: #EAEAEA; }
