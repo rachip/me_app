@@ -4,7 +4,7 @@
       <ion-nav-back-button>
       </ion-nav-back-button>
       <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left" ng-hide="currentPath == '/app/properties'">
         </button>
       </ion-nav-buttons>
     </ion-nav-bar>
@@ -17,10 +17,10 @@
         <ion-item class="heading-item item item-avatar" nav-clear menu-close ui-sref="app">
           <div class="user-image-container">
             <pre-img ratio="_1_1" helper-class="rounded-image">
-              <img class="user-image" ng-src="http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/uploads/{{image}}" spinner-on-load>
+              <img class="user-image" ng-src="http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/uploads/{{url}}" spinner-on-load>
           	</pre-img>
           </div>
-          <h2 class="greeting">{{test}}</h2>
+          <h2 class="greeting">{{msg}}</h2>
         </ion-item>
         <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.purchaseAndSale">
           <i class="icon ion-android-list"></i>

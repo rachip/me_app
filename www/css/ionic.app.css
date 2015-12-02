@@ -7948,7 +7948,11 @@ ion-side-menu .heading-item .user-image-container {
     border-radius: 50%;
     padding: 8px;
     border: 1px solid #999999;
-    width: 100%; }
+    width: 90px;
+    height: 90px; 
+
+
+  }
 ion-side-menu .heading-item .greeting {
   color: #FFFFFF;
   font-weight: 500; }
