@@ -7687,7 +7687,8 @@ a.button {
   color: #444444; }
 
 .bar.app-top-bar {
-  background-color: rgba(56, 126, 245, 0.8); }
+      background-color: rgb(35, 38, 42);
+ }
   .bar.app-top-bar .title {
     color: #FFFFFF !important; }
     .bar.app-top-bar .title * {
