@@ -112,7 +112,7 @@ angular.module('your_app_name.controllers', [])
 
 // PurchaseAndSaleCtrl
 .controller('PurchaseAndSaleCtrl', function($scope, $http, $ionicLoading, $stateParams) {
-
+	
 	$http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PurchaseAndSale', 
 	    method: "GET",
