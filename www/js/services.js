@@ -1,13 +1,18 @@
 angular.module('your_app_name.services', [])
 
-.service('FeedList', function ($rootScope, FeedLoader, $q){
-	this.get = function(feedSourceUrl) {
-		var response = $q.defer();
-		//num is the number of results to pull form the source
-		FeedLoader.fetch({q: feedSourceUrl, num: 20}, {}, function (data){
-			response.resolve(data.responseData);
-		});
-		return response.promise;
+.service('propertyImage', function ($rootScope, FeedLoader, $q){
+	 var filename = '';
+
+	 return {
+            Getimage: function () {
+                return filename;
+            },
+            Setimage: function(value) {
+                filename = value;
+            }
+
+
+
 	};
 })
 

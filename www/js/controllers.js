@@ -1,6 +1,8 @@
 var loginUserType;
 var propertyId;
 
+var propertyFile;
+
 angular.module('your_app_name.controllers', [])
 
 .controller('AuthCtrl', function($scope, $ionicConfig) {
@@ -8,7 +10,13 @@ angular.module('your_app_name.controllers', [])
 })
 
 // APP
-.controller('AppCtrl', function($scope, $ionicConfig) {
+.controller('AppCtrl', function($scope, $ionicConfig, propertyImage) {
+
+$scope.image = propertyImage.Getimage();
+
+console.log($scope.image);
+
+
 })
 
 //LOGIN
@@ -64,11 +72,29 @@ angular.module('your_app_name.controllers', [])
 })
 
 //properties Ctrl
-.controller('PropertiesCtrl', function($scope, $http, $ionicLoading, $ionicSideMenuDelegate)  {
+.controller('PropertiesCtrl', function($scope, $http, $ionicLoading, $ionicSideMenuDelegate, propertyImage)  {
+
+
 	
-	$scope.toggleLeftSideMenu = function(id) {
+	$scope.toggleLeftSideMenu = function(id, ImageName) {
 		propertyId = id;
+		propertyFile = ImageName;
+	    console.log(propertyFile);
+
+		propertyImage.Setimage(propertyFile);
+		
+
+		console.log("get " + $scope.image);
+
+      $scope.$apply(
+
+          $scope.image = propertyImage.Getimage()
+
+
+      	);
+
 		$ionicSideMenuDelegate.toggleLeft();
+
     };
 
     var url;
@@ -98,6 +124,11 @@ angular.module('your_app_name.controllers', [])
 		$scope.propertyImage = [];
 
 		$scope.propertyImage = resp.data;
+
+
+	
+
+
 	
 	}, function(err) {
 	    console.error('ERR', err);
