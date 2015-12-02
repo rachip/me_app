@@ -16,7 +16,11 @@ angular.module('your_app_name.controllers', [])
 	$scope.$on( "aaa", function(event, data) {
 		$scope.msg = data.name;
 		$scope.url = data.url;
+		
 	});
+
+
+
 })
 
 //LOGIN
@@ -78,6 +82,9 @@ angular.module('your_app_name.controllers', [])
 		var unbind = $rootScope.$broadcast( "aaa", {name:name, url:url} );		
 		propertyId = id;
 		$ionicSideMenuDelegate.toggleLeft();
+
+	
+		
     };
     
     var url;
@@ -114,7 +121,7 @@ angular.module('your_app_name.controllers', [])
 })
 
 // PurchaseAndSaleCtrl
-.controller('PurchaseAndSaleCtrl', function($scope, $http, $ionicLoading, $stateParams) {
+.controller('PurchaseAndSaleCtrl', function($scope, $state, $http, $ionicLoading, $stateParams) {
 	
 	$http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PurchaseAndSale', 
@@ -133,10 +140,14 @@ angular.module('your_app_name.controllers', [])
 			$scope.IsBalanceFile = $scope.purchaseAndSale['IsBalanceFile'] == 1 ? true : false;
 			$scope.IsFilesToS‌ign = $scope.purchaseAndSale['IsFilesToS‌ignFile'] == 1 ? true : false;
 			$scope.showNote = $scope.purchaseAndSale['ShowNote'] == 1 ? true : false;
+
 		} else {
 			$scope.msg = "No data to display";		
 			$scope.isHasData = false;
+
 		}
+
+		 $state.go($state.current, {}, {reload: true});
 		
 	}, function(err) {
 	    console.error('ERR', err);
@@ -144,7 +155,7 @@ angular.module('your_app_name.controllers', [])
 })
 
 //ClosingCtrl
-.controller('ClosingCtrl', function($scope, $http, $ionicLoading) {	
+.controller('ClosingCtrl', function($scope, $state, $http, $window, $ionicLoading) {	
 	$http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Closing', 
 	    method: "GET",
@@ -165,6 +176,8 @@ angular.module('your_app_name.controllers', [])
 			$scope.msg = "No data to display";			
 			$scope.isHasData = false;
 		}
+
+	
 		
 	}, function(err) {
 	    console.error('ERR', err);
