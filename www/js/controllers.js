@@ -97,7 +97,6 @@ angular.module('your_app_name.controllers', [])
 	
 	$scope.toggleLeftSideMenu = function(id, name, url) {		
 		var unbind = $rootScope.$broadcast( "aaa", {name:name, url:url} );		
-		$rootScope.propertyId = id;
 		propertyId = id;
 		$ionicSideMenuDelegate.toggleLeft();
     };
@@ -136,191 +135,168 @@ angular.module('your_app_name.controllers', [])
 })
 
 // PurchaseAndSaleCtrl
-.controller('PurchaseAndSaleCtrl', function($scope, $rootScope, $http, $ionicLoading, $stateParams) {
+.controller('PurchaseAndSaleCtrl', function($scope, $http, $ionicLoading, $stateParams) {
 	
-	$scope.getData = function() {		
-		$http({
-		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PurchaseAndSale', 
-		    method: "GET",
-		    params:  {index: propertyId}, 
-		    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-		}).then(function(resp) {
-			if (resp.data.length != 0) {
-				$scope.isHasData = true;
-		
-				$scope.purchaseAndSale = resp.data[0];
-				
-				$scope.isHasFile = $scope.purchaseAndSale['IsHasFile'] == 1 ? true : false;
-				$scope.IsBuyerFile = $scope.purchaseAndSale['IsBuyerFile'] == 1 ? true : false;
-				$scope.IsSignedDocsFile = $scope.purchaseAndSale['IsSignedDocsFile'] == 1 ? true : false;
-				$scope.IsBalanceFile = $scope.purchaseAndSale['IsBalanceFile'] == 1 ? true : false;
-				$scope.IsFilesToS‌ign = $scope.purchaseAndSale['IsFilesToS‌ignFile'] == 1 ? true : false;
-				$scope.showNote = $scope.purchaseAndSale['ShowNote'] == 1 ? true : false;
-			} else {
-				$scope.msg = "No data to display";		
-				$scope.isHasData = false;
-			}
+	$http({
+	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PurchaseAndSale', 
+	    method: "GET",
+	    params:  {index: propertyId}, 
+	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+	}).then(function(resp) {
+		if (resp.data.length != 0) {
+			$scope.isHasData = true;
+	
+			$scope.purchaseAndSale = resp.data[0];
 			
-		}, function(err) {
-		    console.error('ERR', err);
-		})
-	}
-	$rootScope.$watch("propertyId", $scope.getData);
+			$scope.isHasFile = $scope.purchaseAndSale['IsHasFile'] == 1 ? true : false;
+			$scope.IsBuyerFile = $scope.purchaseAndSale['IsBuyerFile'] == 1 ? true : false;
+			$scope.IsSignedDocsFile = $scope.purchaseAndSale['IsSignedDocsFile'] == 1 ? true : false;
+			$scope.IsBalanceFile = $scope.purchaseAndSale['IsBalanceFile'] == 1 ? true : false;
+			$scope.IsFilesToS‌ign = $scope.purchaseAndSale['IsFilesToS‌ignFile'] == 1 ? true : false;
+			$scope.showNote = $scope.purchaseAndSale['ShowNote'] == 1 ? true : false;
+		} else {
+			$scope.msg = "No data to display";		
+			$scope.isHasData = false;
+		}
+		
+	}, function(err) {
+	    console.error('ERR', err);
+	})
 })
 
 //ClosingCtrl
-.controller('ClosingCtrl', function($scope, $rootScope, $http, $ionicLoading) {	
-	
-	$scope.getData = function() {
-		$http({
-		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Closing', 
-		    method: "GET",
-		    params:  {index:propertyId}, 
-		    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-		}).then(function(resp) {
-			if (resp.data.length != 0) {
-				$scope.isHasData = true;
-			
-				$scope.closing = resp.data[0];
+.controller('ClosingCtrl', function($scope, $http, $ionicLoading) {	
+	$http({
+	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Closing', 
+	    method: "GET",
+	    params:  {index:propertyId}, 
+	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+	}).then(function(resp) {
+		if (resp.data.length != 0) {
+			$scope.isHasData = true;
+		
+			$scope.closing = resp.data[0];
 
-				$scope.IsHasFile = $scope.closing['IsHasFile'] == 1 ? true : false;
-				$scope.IsWalkThroghFile = $scope.closing['IsWalkThroghFile'] == 1 ? true : false;
-				$scope.IsInsuranceFile = $scope.closing['IsInsuranceFile'] == 1 ? true : false;
-				$scope.IsClosingDocsFile = $scope.closing['IsClosingDocsFile'] == 1 ? true : false;
-				$scope.showNote = $scope.closing['ShowNote'] == 1 ? true : false;
-			} else {
-				$scope.msg = "No data to display";			
-				$scope.isHasData = false;
-			}
-			
-		}, function(err) {
-		    console.error('ERR', err);
-		})
-	}	
-	$rootScope.$watch("propertyId", $scope.getData);
+			$scope.IsHasFile = $scope.closing['IsHasFile'] == 1 ? true : false;
+			$scope.IsWalkThroghFile = $scope.closing['IsWalkThroghFile'] == 1 ? true : false;
+			$scope.IsInsuranceFile = $scope.closing['IsInsuranceFile'] == 1 ? true : false;
+			$scope.IsClosingDocsFile = $scope.closing['IsClosingDocsFile'] == 1 ? true : false;
+			$scope.showNote = $scope.closing['ShowNote'] == 1 ? true : false;
+		} else {
+			$scope.msg = "No data to display";			
+			$scope.isHasData = false;
+		}
+		
+	}, function(err) {
+	    console.error('ERR', err);
+	})
 })
 
 //RenovationCtrl
-.controller('RenovationCtrl', function($scope, $rootScope, $http, $ionicLoading) {	
-	
-	$scope.getData = function() {
-		$http({
-		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Renovation', 
-		    method: "GET",
-		    params:  {index:propertyId}, 
-		    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-		}).then(function(resp) {
-			if (resp.data.length != 0) {
-				$scope.isHasData = true;
-			
-				$scope.renovation = resp.data[0];
-			
-				$scope.IsHasFile = $scope.renovation['IsHasFile'] == 1 ? true : false;
-				$scope.IsFundsSentFile = $scope.renovation['IsFundsSentFile'] == 1 ? true : false;
-				$scope.IsWorkEstimateFile = $scope.renovation['IsWorkEstimateFile'] == 1 ? true : false;
-				$scope.IsPayment1File = $scope.renovation['IsPayment1File'] == 1 ? true : false;
-				$scope.IsPayment2File = $scope.renovation['IsPayment2File'] == 1 ? true : false;
-				$scope.IsPayment3File = $scope.renovation['IsPayment3File'] == 1 ? true : false;
-				$scope.IsCOFOFile = $scope.renovation['IsCOFOFile'] == 1 ? true : false;
-				$scope.showNote = $scope.renovation['ShowNote'] == 1 ? true : false;
-			} else {
-				$scope.msg = "No data to display";			
-				$scope.isHasData = false;
-			}
-			
-		}, function(err) {
-		    console.error('ERR', err);
-		})
-	}	
-	$rootScope.$watch("propertyId", $scope.getData);
+.controller('RenovationCtrl', function($scope, $http, $ionicLoading) {	
+	$http({
+	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Renovation', 
+	    method: "GET",
+	    params:  {index:propertyId}, 
+	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+	}).then(function(resp) {
+		if (resp.data.length != 0) {
+			$scope.isHasData = true;
+		
+			$scope.renovation = resp.data[0];
+		
+			$scope.IsHasFile = $scope.renovation['IsHasFile'] == 1 ? true : false;
+			$scope.IsFundsSentFile = $scope.renovation['IsFundsSentFile'] == 1 ? true : false;
+			$scope.IsWorkEstimateFile = $scope.renovation['IsWorkEstimateFile'] == 1 ? true : false;
+			$scope.IsPayment1File = $scope.renovation['IsPayment1File'] == 1 ? true : false;
+			$scope.IsPayment2File = $scope.renovation['IsPayment2File'] == 1 ? true : false;
+			$scope.IsPayment3File = $scope.renovation['IsPayment3File'] == 1 ? true : false;
+			$scope.IsCOFOFile = $scope.renovation['IsCOFOFile'] == 1 ? true : false;
+			$scope.showNote = $scope.renovation['ShowNote'] == 1 ? true : false;
+		} else {
+			$scope.msg = "No data to display";			
+			$scope.isHasData = false;
+		}
+		
+	}, function(err) {
+	    console.error('ERR', err);
+	})
 })
 
 //LeasingCtrl
-.controller('LeasingCtrl', function($scope, $rootScope, $http, $ionicLoading) {	
-	
-	$scope.getData = function() {
-		$http({
-		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Leasing', 
-		    method: "GET",
-		    params:  {index:propertyId}, 
-		    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-		}).then(function(resp) {
-			if (resp.data.length != 0) {
-				$scope.isHasData = true;
-			
-				$scope.leasing = resp.data[0];
-			
-				$scope.IsHasFile = $scope.leasing['IsHasFile'] == 1 ? true : false;
-				$scope.IsApplicationFile = $scope.leasing['IsApplicationFile'] == 1 ? true : false;
-				$scope.IsLeaseFile = $scope.leasing['IsLeaseFile'] == 1 ? true : false;
-				$scope.showNote = $scope.leasing['ShowNote'] == 1 ? true : false;
-			} else {
-				$scope.msg = "No data to display";			
-				$scope.isHasData = false;
-			}
-			
-		}, function(err) {
-		    console.error('ERR', err);
-		})	
-	}
-	$rootScope.$watch("propertyId", $scope.getData);
+.controller('LeasingCtrl', function($scope, $http, $ionicLoading) {	
+	$http({
+	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Leasing', 
+	    method: "GET",
+	    params:  {index:propertyId}, 
+	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+	}).then(function(resp) {
+		if (resp.data.length != 0) {
+			$scope.isHasData = true;
+		
+			$scope.leasing = resp.data[0];
+		
+			$scope.IsHasFile = $scope.leasing['IsHasFile'] == 1 ? true : false;
+			$scope.IsApplicationFile = $scope.leasing['IsApplicationFile'] == 1 ? true : false;
+			$scope.IsLeaseFile = $scope.leasing['IsLeaseFile'] == 1 ? true : false;
+			$scope.showNote = $scope.leasing['ShowNote'] == 1 ? true : false;
+		} else {
+			$scope.msg = "No data to display";			
+			$scope.isHasData = false;
+		}
+		
+	}, function(err) {
+	    console.error('ERR', err);
+	})
 })
 
 //OccupiedCtrl
-.controller('OccupiedCtrl', function($scope, $rootScope, $http, $ionicLoading) {	
-	
-	$scope.getData = function() {
-		$http({
-		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Occupied', 
-		    method: "GET",
-		    params:  {index:propertyId}, 
-		    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-		}).then(function(resp) {
-			if (resp.data.length != 0) {
-				$scope.isHasData = true;
-			
-				$scope.occupied = resp.data[0];
-			
-				$scope.IsHasFile = $scope.occupied['IsHasFile'] == 1 ? true : false;
-				$scope.IsMaintanenceFile = $scope.occupied['IsMaintanenceFile'] == 1 ? true : false;
-				$scope.showNote = $scope.occupied['ShowNote'] == 1 ? true : false;
-			} else {
-				$scope.msg = "No data to display";			
-				$scope.isHasData = false;
-			}
-			
-		}, function(err) {
-		    console.error('ERR', err);
-		})
-	}
-	$rootScope.$watch("propertyId", $scope.getData);
+.controller('OccupiedCtrl', function($scope, $http, $ionicLoading) {	
+	$http({
+	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Occupied', 
+	    method: "GET",
+	    params:  {index:propertyId}, 
+	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+	}).then(function(resp) {
+		if (resp.data.length != 0) {
+			$scope.isHasData = true;
+		
+			$scope.occupied = resp.data[0];
+		
+			$scope.IsHasFile = $scope.occupied['IsHasFile'] == 1 ? true : false;
+			$scope.IsMaintanenceFile = $scope.occupied['IsMaintanenceFile'] == 1 ? true : false;
+			$scope.showNote = $scope.occupied['ShowNote'] == 1 ? true : false;
+		} else {
+			$scope.msg = "No data to display";			
+			$scope.isHasData = false;
+		}
+		
+	}, function(err) {
+	    console.error('ERR', err);
+	})
 })
 
 //EvictionCtrl
-.controller('EvictionCtrl', function($scope, $rootScope, $timeout, $http, $ionicLoading) {
-	
-	$scope.getData = function() {
-		$http({
-		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Eviction', 
-		    method: "GET",
-		    params:  {index:propertyId}, 
-		    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-		}).then(function(resp) {
-			if (resp.data.length != 0) {
-				$scope.isHasData = true;
-			
-				$scope.eviction = resp.data[0];
+.controller('EvictionCtrl', function($scope, $timeout, $http, $ionicLoading) {
+	$http({
+	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Eviction', 
+	    method: "GET",
+	    params:  {index:propertyId}, 
+	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+	}).then(function(resp) {
+		if (resp.data.length != 0) {
+			$scope.isHasData = true;
+		
+			$scope.eviction = resp.data[0];
 
-				$scope.IsHasFile = $scope.eviction['IsHasFile'] == 1 ? true : false;
-				$scope.showNote = $scope.eviction['ShowNote'] == 1 ? true : false;
-			} else {
-				$scope.msg = "No data to display";			
-				$scope.isHasData = false;
-			}
+			$scope.IsHasFile = $scope.eviction['IsHasFile'] == 1 ? true : false;
+			$scope.showNote = $scope.eviction['ShowNote'] == 1 ? true : false;
+		} else {
+			$scope.msg = "No data to display";			
+			$scope.isHasData = false;
+		}
 
-		}, function(err) {
-		    console.error('ERR', err);
-		})
-	}
-	$rootScope.$watch("propertyId", $scope.getData);
+	}, function(err) {
+	    console.error('ERR', err);
+	})
 })
