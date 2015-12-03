@@ -1,0 +1,19 @@
+<ion-view class="slider-view">
+  <ion-nav-title>
+    <span>Slider</span>
+  </ion-nav-title>
+  <ion-content scroll="false">
+    <ion-slide-box show-pager="true">
+      <ion-slide ng-repeat="file in allFiles">
+        <div class="list card">
+          <div class="item item-image">
+
+            <h2> {{file.FileName}} </h2>
+            <img ng-src="http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/uploads/{{file.FileName}}">
+          </div>
+          
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+</ion-view>

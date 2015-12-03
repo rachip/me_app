@@ -162,6 +162,8 @@ angular.module('me', [
       }
     }
   })
+
+
   
   //eviction
   .state('app.Evictions', {
@@ -173,6 +175,19 @@ angular.module('me', [
       }
     }
   })
+
+  //file slider
+  .state('app.slider', {
+    url: "/slider",
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/slider.html",
+        controller: 'ShowFilesCtrl'
+
+      }
+    }
+  })
+
 ;
 
   // if none of the above states are matched, use this as the fallback

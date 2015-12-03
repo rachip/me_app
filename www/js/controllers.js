@@ -1,6 +1,7 @@
 var loginUserType;
 var propertyId;
 var propertyImageId;
+var files = [];
 
 angular.module('your_app_name.controllers', [])
 
@@ -136,7 +137,8 @@ angular.module('your_app_name.controllers', [])
 })
 
 // PurchaseAndSaleCtrl
-.controller('PurchaseAndSaleCtrl', function($scope, $rootScope, $http, $ionicLoading, $stateParams) {
+.controller('PurchaseAndSaleCtrl', function($scope, $rootScope, $http, $ionicLoading, $stateParams, FileService, allFilesService) {
+
 	
 	$scope.getData = function() {		
 		$http({
@@ -147,6 +149,8 @@ angular.module('your_app_name.controllers', [])
 		}).then(function(resp) {
 			if (resp.data.length != 0) {
 				$scope.isHasData = true;
+
+				//console.log(resp.data);
 		
 				$scope.purchaseAndSale = resp.data[0];
 				
@@ -166,6 +170,19 @@ angular.module('your_app_name.controllers', [])
 		})
 	}
 	$rootScope.$watch("propertyId", $scope.getData);
+
+	$scope.getFile = function(propId, typeId) {
+
+	$scope.result = FileService.getFiles(propId, typeId);
+
+
+	console.log("result:" + $scope.result);
+
+
+	allFilesService.setAllFiles();
+
+};
+
 })
 
 //ClosingCtrl
@@ -323,4 +340,14 @@ angular.module('your_app_name.controllers', [])
 		})
 	}
 	$rootScope.$watch("propertyId", $scope.getData);
+})
+
+   .controller('ShowFilesCtrl', function($scope, allFilesService) {
+	
+	
+		$scope.allFiles = allFilesService.getAllFiles();
+
+		console.log("$scope.allFiles : " + $scope.allFiles);
+
+
 })

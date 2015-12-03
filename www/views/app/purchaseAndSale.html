@@ -18,7 +18,7 @@
           <p class="description">
           	{{purchaseAndSale['PropertyName']}}         
           </p>
-         	<i ng-show="isHasFile" class="icon ion-android-document"></i>         
+         	<i style="cursor:pointer;" ng-show="isHasFile" ng-click="getFile(purchaseAndSale['PropertyId'], 22)" ui-sref="app.slider" class="icon ion-android-document"></i>         
         </div>        
       </div>
      

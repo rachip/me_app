@@ -12,6 +12,7 @@ angular.module('your_app_name.services', [])
 })
 
 
+
 // PUSH NOTIFICATIONS
 .service('PushNotificationsService', function ($rootScope, $cordovaPush, NodePushServer, GCM_SENDER_ID){
 	/* Apple recommends you register your application for push notifications on the device every time it’s run since tokens can change. The documentation says: ‘By requesting the device token and passing it to the provider every time your application launches, you help to ensure that the provider has the current token for the device. If a user restores a backup to a device other than the one that the backup was created for (for example, the user migrates data to a new device), he or she must launch the application at least once for it to receive notifications again. If the user restores backup data to a new device or reinstalls the operating system, the device token changes. Moreover, never cache a device token and give that to your provider; always get the token from the system whenever you need it.’ */
@@ -222,6 +223,57 @@ angular.module('your_app_name.services', [])
 	};
 
 })
+
+//allFilesService
+
+.service('allFilesService', function () {
+        var all_files;
+        var value;
+
+
+        return {
+            getAllFiles: function () {
+                return all_files;
+            },
+            setAllFiles: function(value) {
+                all_files = value;
+            }
+        };
+
+})
+
+
+// FileService
+
+.service('FileService', function ($rootScope,  $http, allFilesService){
+
+	this.getFiles = function(propId, typeId) {
+
+		$http({
+		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/GetFiles/getPropertyFile', 
+		    method: "GET",
+		    params:  {propId: propId, typeId: typeId}, 
+		    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+		}).then(function(resp) {
+
+
+				//var a = [{"FileId":"161","FileName":"1449143816gdola_x5.jpg","TypeId":"22","PropertyId":"1"},{"FileId":"162","FileName":"1449143848ptydeetg.jpg","TypeId":"22","PropertyId":"1"}];
+	//console.log(resp[0].FileName);
+	allFilesService.setAllFiles(resp.data);
+	console.log(allFilesService.getAllFiles());
+		
+			
+		}, function(err) {
+		    console.error('ERR', err);
+		})	
+
+
+		};
+
+})
+
+
+
 
 
 ;
