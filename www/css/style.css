@@ -13,3 +13,9 @@
 .pointer {
 	cursor: pointer;
 }
+
+.imageHeight {
+    max-height: 347px;
+    width: 100%;
+    overflow: hidden	
+}

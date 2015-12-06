@@ -149,8 +149,7 @@ angular.module('your_app_name.controllers', [])
 
 // PurchaseAndSaleCtrl
 .controller('PurchaseAndSaleCtrl', function($scope, $rootScope, $log, $http, $ionicLoading, $stateParams, FileService, allFilesService) {
-	console.log('PurchaseAndSaleCtrl start');
-	$scope.getData = function() {		
+	$scope.getData = function() {	
 		$http({
 		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PurchaseAndSale', 
 		    method: "GET",
@@ -159,8 +158,7 @@ angular.module('your_app_name.controllers', [])
 		}).then(function(resp) {
 			if (resp.data.length != 0) {
 				$scope.isHasData = true;
-
-				//console.log(resp.data);
+				$scope.isMsg = false;
 		
 				$scope.purchaseAndSale = resp.data[0];
 				
@@ -170,8 +168,10 @@ angular.module('your_app_name.controllers', [])
 				$scope.IsBalanceFile = $scope.purchaseAndSale['IsBalanceFile'] == 1 ? true : false;
 				$scope.IsFilesTo = $scope.purchaseAndSale['IsFilesToS‌ignFile'] == 1 ? true : false;
 				$scope.showNote = $scope.purchaseAndSale['ShowNote'] == 1 ? true : false;
+								
 			} else {
 				$scope.msg = "No data to display";		
+				$scope.isMsg = true;
 				$scope.isHasData = false;
 			}
 			
@@ -179,6 +179,7 @@ angular.module('your_app_name.controllers', [])
 		    console.error('ERR', err);
 		})
 	}
+	
 	$rootScope.$watch("propertyId", $scope.getData);
 
 	// clicking on file icon get the files from server and show them on slider page
@@ -207,7 +208,8 @@ angular.module('your_app_name.controllers', [])
 		}).then(function(resp) {
 			if (resp.data.length != 0) {
 				$scope.isHasData = true;
-			
+				$scope.isMsg = false;
+				
 				$scope.closing = resp.data[0];
 
 				$scope.IsHasFile = $scope.closing['IsHasFile'] == 1 ? true : false;
@@ -217,6 +219,7 @@ angular.module('your_app_name.controllers', [])
 				$scope.showNote = $scope.closing['ShowNote'] == 1 ? true : false;
 			} else {
 				$scope.msg = "No data to display";			
+				$scope.isMsg = true;
 				$scope.isHasData = false;
 			}
 			
@@ -252,7 +255,8 @@ angular.module('your_app_name.controllers', [])
 		}).then(function(resp) {
 			if (resp.data.length != 0) {
 				$scope.isHasData = true;
-			
+				$scope.isMsg = false;
+				
 				$scope.renovation = resp.data[0];
 			
 				$scope.IsHasFile = $scope.renovation['IsHasFile'] == 1 ? true : false;
@@ -265,6 +269,7 @@ angular.module('your_app_name.controllers', [])
 				$scope.showNote = $scope.renovation['ShowNote'] == 1 ? true : false;
 			} else {
 				$scope.msg = "No data to display";			
+				$scope.isMsg = true;
 				$scope.isHasData = false;
 			}
 			
@@ -300,6 +305,7 @@ angular.module('your_app_name.controllers', [])
 		}).then(function(resp) {
 			if (resp.data.length != 0) {
 				$scope.isHasData = true;
+				$scope.isMsg = false;
 			
 				$scope.leasing = resp.data[0];
 			
@@ -309,6 +315,7 @@ angular.module('your_app_name.controllers', [])
 				$scope.showNote = $scope.leasing['ShowNote'] == 1 ? true : false;
 			} else {
 				$scope.msg = "No data to display";			
+				$scope.isMsg = true;
 				$scope.isHasData = false;
 			}
 			
@@ -344,6 +351,7 @@ angular.module('your_app_name.controllers', [])
 		}).then(function(resp) {
 			if (resp.data.length != 0) {
 				$scope.isHasData = true;
+				$scope.isMsg = false;
 			
 				$scope.occupied = resp.data[0];
 			
@@ -352,6 +360,7 @@ angular.module('your_app_name.controllers', [])
 				$scope.showNote = $scope.occupied['ShowNote'] == 1 ? true : false;
 			} else {
 				$scope.msg = "No data to display";			
+				$scope.isMsg = true;
 				$scope.isHasData = false;
 			}
 			
@@ -387,6 +396,7 @@ angular.module('your_app_name.controllers', [])
 		}).then(function(resp) {
 			if (resp.data.length != 0) {
 				$scope.isHasData = true;
+				$scope.isMsg = false;
 			
 				$scope.eviction = resp.data[0];
 
@@ -394,6 +404,7 @@ angular.module('your_app_name.controllers', [])
 				$scope.showNote = $scope.eviction['ShowNote'] == 1 ? true : false;
 			} else {
 				$scope.msg = "No data to display";			
+				$scope.isMsg = true;
 				$scope.isHasData = false;
 			}
 
