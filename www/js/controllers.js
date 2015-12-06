@@ -157,7 +157,7 @@ angular.module('your_app_name.controllers', [])
 				$scope.IsBuyerFile = $scope.purchaseAndSale['IsBuyerFile'] == 1 ? true : false;
 				$scope.IsSignedDocsFile = $scope.purchaseAndSale['IsSignedDocsFile'] == 1 ? true : false;
 				$scope.IsBalanceFile = $scope.purchaseAndSale['IsBalanceFile'] == 1 ? true : false;
-				$scope.IsFilesToS‌ign = $scope.purchaseAndSale['IsFilesToS‌ignFile'] == 1 ? true : false;
+				$scope.IsFilesTo = $scope.purchaseAndSale['IsFilesToS‌ignFile'] == 1 ? true : false;
 				$scope.showNote = $scope.purchaseAndSale['ShowNote'] == 1 ? true : false;
 			} else {
 				$scope.msg = "No data to display";		

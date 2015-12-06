@@ -18,7 +18,10 @@
           <p class="description">
           	{{purchaseAndSale['PropertyName']}}         
           </p>
-         	<i style="cursor:pointer;" ng-show="isHasFile" ng-click="getFile(purchaseAndSale['PropertyId'], 22)" ui-sref="app.slider" class="icon ion-android-document"></i>         
+         	<i ng-show="isHasFile" 
+         	   ng-click="getFile(purchaseAndSale['PropertyId'], 22)" ui-sref="app.slider" 
+         	   class="icon ion-android-document pointer">
+         	</i>         
         </div>        
       </div>
      
@@ -27,7 +30,9 @@
         <div>
           <strong><span class="title">Buyer Name</span></strong>
           <p class="description">{{purchaseAndSale['BuyerName']}}</p>
-          <i ng-show="IsBuyerFile" class="icon ion-android-document"></i>         
+          <i ng-show="IsBuyerFile" class="icon ion-android-document pointer"
+             ng-click="getFile(purchaseAndSale['PropertyId'], 2)" ui-sref="app.slider" >
+          </i>         
         </div>
       </div>
       
@@ -69,7 +74,9 @@
         <i class="icon ion-ios-browsers-outline"></i>
         <div>
           <strong><span class="title">Signed Docs</span></strong>
-           <i class="icon ion-android-document"></i>         
+           <i class="icon ion-android-document pointer"
+              ng-click="getFile(purchaseAndSale['PropertyId'], 3)" ui-sref="app.slider" >
+           </i>         
         </div>
       </div>
     
@@ -78,15 +85,19 @@
         <div>
           <strong><span class="title">Balance</span></strong>
           <p class="description">{{purchaseAndSale['Balance']}}</p>
-          <i ng-show="IsBalanceFile" class="icon ion-android-document"></i>         
+          <i ng-show="IsBalanceFile" class="icon ion-android-document pointer"
+             ng-click="getFile(purchaseAndSale['PropertyId'], 5)" ui-sref="app.slider" >
+          </i>         
         </div>
       </div>
       
-      <div ng-show="IsFilesToS‌ign" class="item item-icon-left item-icon-right">
+      <div ng-show="IsFilesTo" class="item item-icon-left item-icon-right">
         <i class="icon ion-ios-browsers-outline"></i>
         <div>
           <strong><span class="title">Files To S‌ign</span></strong>
-          <i class="icon ion-android-document"></i>         
+          <i class="icon ion-android-document pointer" 
+          	 ng-click="getFile(purchaseAndSale['PropertyId'], 4)" ui-sref="app.slider">
+          </i>         
         </div>
       </div>
       
