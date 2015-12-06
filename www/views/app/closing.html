@@ -16,7 +16,9 @@
         <div>
           <strong><span class="title text_type_bold">Property Name</span></strong>
           <p class="description">{{closing['PropertyName']}}</p>
-          <i ng-show="isHasFile" class="icon ion-android-document"></i>         
+          <i ng-show="isHasFile" class="icon ion-android-document pointer"
+          	 ng-click="getFile(closing['PropertyId'], 23)" ui-sref="app.slider" >
+          </i>         
         </div>
       </div>
      
@@ -37,7 +39,9 @@
           <p class="description">
           	{{closing['WalkThrogh'] == 1 ? "Yes" : "No"}}
           </p>
-          <i ng-show="IsWalkThroghFile" class="icon ion-android-document"></i>         
+          <i ng-show="IsWalkThroghFile" class="icon ion-android-document pointer"
+          	 ng-click="getFile(closing['PropertyId'], 6)" ui-sref="app.slider" >
+          </i>         
         </div>
       </div>
       
@@ -48,7 +52,9 @@
           <p class="description">
           	{{closing['Insurance'] == 1 ? "Yes" : "No"}}
           </p>
-          <i ng-show="IsInsuranceFile" class="icon ion-android-document"></i>
+          <i ng-show="IsInsuranceFile" class="icon ion-android-document pointer"
+          	 ng-click="getFile(closing['PropertyId'], 7)" ui-sref="app.slider" >
+          </i>
         </div>
       </div>
     	
@@ -57,7 +63,9 @@
         <div>
           <strong><span class="title">Closing Docs</span></strong>
           <p class="description"></p>
-          <i class="icon ion-android-document"></i>         
+          <i class="icon ion-android-document pointer"
+          	 ng-click="getFile(closing['PropertyId'], 8)" ui-sref="app.slider" >
+          </i>         
         </div>
       </div>
     

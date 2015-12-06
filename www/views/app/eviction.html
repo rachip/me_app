@@ -16,7 +16,9 @@
         <div>
           <strong><span class="title text_type_bold">Property Name</span></strong>
           <p class="description">{{eviction['PropertyName']}}</p>
-          <i ng-show="IsHasFile" class="icon ion-android-document"></i>
+          <i ng-show="IsHasFile" class="icon ion-android-document pointer"
+             ng-click="getFile(eviction['PropertyId'], 19)" ui-sref="app.slider" >
+          </i>
         </div>
       </div>
      

@@ -10,10 +10,11 @@ angular.module('your_app_name.controllers', [])
 })
 
 // APP
-.controller('AppCtrl', function($scope, $location, $ionicConfig, $rootScope, $http) {
+.controller('AppCtrl', function($scope, $location, $ionicConfig, $rootScope, $http, $ionicPopup) {
 
 	$scope.currentPath = $location.path();
-
+	console.log($scope.currentPath);
+	
 	$scope.$on( "aaa", function(event, data) {
 		$scope.msg = data.name;
 		$scope.url = data.url;
@@ -38,6 +39,16 @@ angular.module('your_app_name.controllers', [])
 		}, function(err) {
 		    console.error('ERR', err);
 		})
+		
+		var alertPopup = $ionicPopup.alert({
+		     title: 'Update Me',
+		     template: 'Your request for update was sent to the office'
+		   });
+		   alertPopup.then(function(res) {
+		     //console.log('Thank you for not eating my delicious ice cream cone');
+		   });
+
+		
 	};
 })
 
@@ -170,28 +181,22 @@ angular.module('your_app_name.controllers', [])
 	}
 	$rootScope.$watch("propertyId", $scope.getData);
 
-	$scope.getFile = function(propId, typeId) {
-		
+	// clicking on file icon get the files from server and show them on slider page
+	$scope.getFile = function(propId, typeId) {		
 		var promise = FileService.getFiles(propId, typeId);
 		promise.then(
 	          function(propId, typeId) { 
-	        	  $scope.result = FileService.getFiles(propId, typeId);	        	  
-	        	  var unbind = $rootScope.$broadcast( "bbb", "aa" );	
-	        	  //allFilesService.setAllFiles();	
+	        	  $scope.result = allFilesService.getAllFiles();	        	  
+	        	  var unbind = $rootScope.$broadcast( "bbb", "aa" );
 	          },
 	          function(errorPayload) {
-	              $log.error('failure loading movie', errorPayload);
+	              $log.error('failure loading file', errorPayload);
 	          });
-		console.log('PurchaseAndSaleCtrl end');
-		//$scope.result = FileService.getFiles(propId, typeId);
-		//console.log("result:" + $scope.result);
-		//allFilesService.setAllFiles();	
 	};
-
 })
 
 //ClosingCtrl
-.controller('ClosingCtrl', function($scope, $rootScope, $http, $ionicLoading) {	
+.controller('ClosingCtrl', function($scope, $rootScope, $http, $ionicLoading, FileService, allFilesService) {	
 	
 	$scope.getData = function() {
 		$http({
@@ -220,10 +225,23 @@ angular.module('your_app_name.controllers', [])
 		})
 	}	
 	$rootScope.$watch("propertyId", $scope.getData);
+	
+	// clicking on file icon get the files from server and show them on slider page
+	$scope.getFile = function(propId, typeId) {		
+		var promise = FileService.getFiles(propId, typeId);
+		promise.then(
+	          function(propId, typeId) { 
+	        	  $scope.result = allFilesService.getAllFiles();    	  
+	        	  var unbind = $rootScope.$broadcast( "bbb", "aa" );
+	          },
+	          function(errorPayload) {
+	              $log.error('failure loading file', errorPayload);
+	          });
+	};
 })
 
 //RenovationCtrl
-.controller('RenovationCtrl', function($scope, $rootScope, $http, $ionicLoading) {	
+.controller('RenovationCtrl', function($scope, $rootScope, $http, $ionicLoading, FileService, allFilesService) {	
 	
 	$scope.getData = function() {
 		$http({
@@ -255,10 +273,23 @@ angular.module('your_app_name.controllers', [])
 		})
 	}	
 	$rootScope.$watch("propertyId", $scope.getData);
+	
+	// clicking on file icon get the files from server and show them on slider page
+	$scope.getFile = function(propId, typeId) {		
+		var promise = FileService.getFiles(propId, typeId);
+		promise.then(
+	          function(propId, typeId) { 
+	        	  $scope.result = allFilesService.getAllFiles();    	  
+	        	  var unbind = $rootScope.$broadcast( "bbb", "aa" );
+	          },
+	          function(errorPayload) {
+	              $log.error('failure loading file', errorPayload);
+	          });
+	};
 })
 
 //LeasingCtrl
-.controller('LeasingCtrl', function($scope, $rootScope, $http, $ionicLoading) {	
+.controller('LeasingCtrl', function($scope, $rootScope, $http, $ionicLoading, FileService, allFilesService) {	
 	
 	$scope.getData = function() {
 		$http({
@@ -286,10 +317,23 @@ angular.module('your_app_name.controllers', [])
 		})	
 	}
 	$rootScope.$watch("propertyId", $scope.getData);
+	
+	// clicking on file icon get the files from server and show them on slider page
+	$scope.getFile = function(propId, typeId) {		
+		var promise = FileService.getFiles(propId, typeId);
+		promise.then(
+	          function(propId, typeId) { 
+	        	  $scope.result = allFilesService.getAllFiles();    	  
+	        	  var unbind = $rootScope.$broadcast( "bbb", "aa" );
+	          },
+	          function(errorPayload) {
+	              $log.error('failure loading file', errorPayload);
+	          });
+	};
 })
 
 //OccupiedCtrl
-.controller('OccupiedCtrl', function($scope, $rootScope, $http, $ionicLoading) {	
+.controller('OccupiedCtrl', function($scope, $rootScope, $http, $ionicLoading, FileService, allFilesService) {	
 	
 	$scope.getData = function() {
 		$http({
@@ -316,10 +360,23 @@ angular.module('your_app_name.controllers', [])
 		})
 	}
 	$rootScope.$watch("propertyId", $scope.getData);
+	
+	// clicking on file icon get the files from server and show them on slider page
+	$scope.getFile = function(propId, typeId) {		
+		var promise = FileService.getFiles(propId, typeId);
+		promise.then(
+	          function(propId, typeId) { 
+	        	  $scope.result = allFilesService.getAllFiles();    	  
+	        	  var unbind = $rootScope.$broadcast( "bbb", "aa" );
+	          },
+	          function(errorPayload) {
+	              $log.error('failure loading file', errorPayload);
+	          });
+	};
 })
 
 //EvictionCtrl
-.controller('EvictionCtrl', function($scope, $rootScope, $timeout, $http, $ionicLoading) {
+.controller('EvictionCtrl', function($scope, $rootScope, $timeout, $http, $ionicLoading, FileService, allFilesService) {
 	
 	$scope.getData = function() {
 		$http({
@@ -345,13 +402,23 @@ angular.module('your_app_name.controllers', [])
 		})
 	}
 	$rootScope.$watch("propertyId", $scope.getData);
+	
+	// clicking on file icon get the files from server and show them on slider page
+	$scope.getFile = function(propId, typeId) {		
+		var promise = FileService.getFiles(propId, typeId);
+		promise.then(
+	          function(propId, typeId) { 
+	        	  $scope.result = allFilesService.getAllFiles();    	  
+	        	  var unbind = $rootScope.$broadcast( "bbb", "aa" );
+	          },
+	          function(errorPayload) {
+	              $log.error('failure loading file', errorPayload);
+	          });
+	};
 })
 
-.controller('ShowFilesCtrl', function($scope, allFilesService) {
-	//console.log("ShowFilesCtrl ");
+.controller('ShowFilesCtrl', function($scope, $window,  allFilesService) {
 	$scope.$on( "bbb", function(event, data) {
-		//console.log("get");
 		$scope.allFiles = allFilesService.getAllFiles();
-		//console.log("$scope.allFiles : " + $scope.allFiles[0]['FileId']);		
-	});	
+	});
 })
