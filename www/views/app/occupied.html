@@ -16,7 +16,9 @@
         <div>
           <strong><span class="title text_type_bold">Property Name</span></strong>
           <p class="description">{{occupied['PropertyName']}}</p>
-          <i ng-show="IsHasFile" class="icon ion-android-document"></i>
+          <i ng-show="IsHasFile" class="icon ion-android-document pointer" 
+             ng-click="getFile(occupied['PropertyId'], 20)" ui-sref="app.slider">
+          </i>
         </div>
       </div>
      
@@ -57,7 +59,9 @@
         <div>
           <strong><span class="title">Maintanence</span></strong>
           <p class="description">{{occupied['Maintanence']}}</p>
-          <i ng-show="IsMaintanenceFile" class="icon ion-android-document"></i>
+          <i ng-show="IsMaintanenceFile" class="icon ion-android-document pointer"
+          	 ng-click="getFile(occupied['PropertyId'], 17)" ui-sref="app.slider">
+          </i>
         </div>
       </div>
       

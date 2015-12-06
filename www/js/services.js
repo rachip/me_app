@@ -238,11 +238,8 @@ angular.module('your_app_name.services', [])
     };
 })
 
-
 // FileService
-
 .service('FileService', function ($rootScope,  $http, allFilesService, $q) {
-
 	this.getFiles = function(propId, typeId) {
 		var deferred = $q.defer();
 		$http({
@@ -251,13 +248,9 @@ angular.module('your_app_name.services', [])
 		    params:  {propId: propId, typeId: typeId}, 
 		    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 		}).then(function(resp) {
-				allFilesService.setAllFiles(resp.data);
-				console.log("set");
-				//console.log("FileService " +allFilesService.getAllFiles());
+			allFilesService.setAllFiles(resp.data);
+			console.log(resp.data);
 			deferred.resolve({
-				//var a = [{"FileId":"161","FileName":"1449143816gdola_x5.jpg","TypeId":"22","PropertyId":"1"},{"FileId":"162","FileName":"1449143848ptydeetg.jpg","TypeId":"22","PropertyId":"1"}];
-				//console.log(resp[0].FileName);
-				
 			});
 			
 		}, function(err) {
@@ -265,13 +258,6 @@ angular.module('your_app_name.services', [])
 		    console.error('ERR', err);
 		})
 		 return deferred.promise;
-
 		};
-
 })
-
-
-
-
-
 ;
