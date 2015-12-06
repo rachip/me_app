@@ -4,6 +4,7 @@
   </ion-nav-title>
   <ion-content ng-if="allFiles.length>0" scroll="false">    
     <ion-slide-box  show-pager="true">
+      <ion-slide ng-repeat="file in allFiles">        
       <ion-slide ng-repeat="file in allFiles">       	
         <div class="list card">
           <div class="item item-image imageHeight">
