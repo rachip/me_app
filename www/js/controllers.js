@@ -137,9 +137,8 @@ angular.module('your_app_name.controllers', [])
 })
 
 // PurchaseAndSaleCtrl
-.controller('PurchaseAndSaleCtrl', function($scope, $rootScope, $http, $ionicLoading, $stateParams, FileService, allFilesService) {
-
-	
+.controller('PurchaseAndSaleCtrl', function($scope, $rootScope, $log, $http, $ionicLoading, $stateParams, FileService, allFilesService) {
+	console.log('PurchaseAndSaleCtrl start');
 	$scope.getData = function() {		
 		$http({
 		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PurchaseAndSale', 
@@ -172,16 +171,22 @@ angular.module('your_app_name.controllers', [])
 	$rootScope.$watch("propertyId", $scope.getData);
 
 	$scope.getFile = function(propId, typeId) {
-
-	$scope.result = FileService.getFiles(propId, typeId);
-
-
-	console.log("result:" + $scope.result);
-
-
-	allFilesService.setAllFiles();
-
-};
+		
+		var promise = FileService.getFiles(propId, typeId);
+		promise.then(
+	          function(propId, typeId) { 
+	        	  $scope.result = FileService.getFiles(propId, typeId);	        	  
+	        	  var unbind = $rootScope.$broadcast( "bbb", "aa" );	
+	        	  //allFilesService.setAllFiles();	
+	          },
+	          function(errorPayload) {
+	              $log.error('failure loading movie', errorPayload);
+	          });
+		console.log('PurchaseAndSaleCtrl end');
+		//$scope.result = FileService.getFiles(propId, typeId);
+		//console.log("result:" + $scope.result);
+		//allFilesService.setAllFiles();	
+	};
 
 })
 
@@ -342,12 +347,11 @@ angular.module('your_app_name.controllers', [])
 	$rootScope.$watch("propertyId", $scope.getData);
 })
 
-   .controller('ShowFilesCtrl', function($scope, allFilesService) {
-	
-	
+.controller('ShowFilesCtrl', function($scope, allFilesService) {
+	//console.log("ShowFilesCtrl ");
+	$scope.$on( "bbb", function(event, data) {
+		//console.log("get");
 		$scope.allFiles = allFilesService.getAllFiles();
-
-		console.log("$scope.allFiles : " + $scope.allFiles);
-
-
+		//console.log("$scope.allFiles : " + $scope.allFiles[0]['FileId']);		
+	});	
 })

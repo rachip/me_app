@@ -225,48 +225,46 @@ angular.module('your_app_name.services', [])
 })
 
 //allFilesService
-
 .service('allFilesService', function () {
-        var all_files;
-        var value;
-
-
-        return {
-            getAllFiles: function () {
-                return all_files;
-            },
-            setAllFiles: function(value) {
-                all_files = value;
-            }
-        };
-
+    var all_files;
+    var value;
+    return {
+        getAllFiles: function () {
+            return all_files;
+        },
+        setAllFiles: function(value) {
+            all_files = value;
+        }
+    };
 })
 
 
 // FileService
 
-.service('FileService', function ($rootScope,  $http, allFilesService){
+.service('FileService', function ($rootScope,  $http, allFilesService, $q) {
 
 	this.getFiles = function(propId, typeId) {
-
+		var deferred = $q.defer();
 		$http({
 		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/GetFiles/getPropertyFile', 
 		    method: "GET",
 		    params:  {propId: propId, typeId: typeId}, 
 		    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 		}).then(function(resp) {
-
-
+				allFilesService.setAllFiles(resp.data);
+				console.log("set");
+				//console.log("FileService " +allFilesService.getAllFiles());
+			deferred.resolve({
 				//var a = [{"FileId":"161","FileName":"1449143816gdola_x5.jpg","TypeId":"22","PropertyId":"1"},{"FileId":"162","FileName":"1449143848ptydeetg.jpg","TypeId":"22","PropertyId":"1"}];
-	//console.log(resp[0].FileName);
-	allFilesService.setAllFiles(resp.data);
-	console.log(allFilesService.getAllFiles());
-		
+				//console.log(resp[0].FileName);
+				
+			});
 			
 		}, function(err) {
+			deferred.reject(err);
 		    console.error('ERR', err);
-		})	
-
+		})
+		 return deferred.promise;
 
 		};
 
