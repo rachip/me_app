@@ -10,10 +10,11 @@ angular.module('your_app_name.controllers', [])
 })
 
 // APP
-.controller('AppCtrl', function($scope, $location, $ionicConfig, $rootScope, $http) {
+.controller('AppCtrl', function($scope, $location, $ionicConfig, $rootScope, $http, $ionicPopup) {
 
 	$scope.currentPath = $location.path();
-
+	console.log($scope.currentPath);
+	
 	$scope.$on( "aaa", function(event, data) {
 		$scope.msg = data.name;
 		$scope.url = data.url;
@@ -38,6 +39,16 @@ angular.module('your_app_name.controllers', [])
 		}, function(err) {
 		    console.error('ERR', err);
 		})
+		
+		var alertPopup = $ionicPopup.alert({
+		     title: 'Update Me',
+		     template: 'Your request for update was sent to the office'
+		   });
+		   alertPopup.then(function(res) {
+		     //console.log('Thank you for not eating my delicious ice cream cone');
+		   });
+
+		
 	};
 })
 
