@@ -149,8 +149,7 @@ angular.module('your_app_name.controllers', [])
 
 // PurchaseAndSaleCtrl
 .controller('PurchaseAndSaleCtrl', function($scope, $rootScope, $log, $http, $ionicLoading, $stateParams, FileService, allFilesService) {
-	console.log('PurchaseAndSaleCtrl start');
-	$scope.getData = function() {		
+	$scope.getData = function() {	
 		$http({
 		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PurchaseAndSale', 
 		    method: "GET",
@@ -159,8 +158,7 @@ angular.module('your_app_name.controllers', [])
 		}).then(function(resp) {
 			if (resp.data.length != 0) {
 				$scope.isHasData = true;
-
-				//console.log(resp.data);
+				$scope.isMsg = false;
 		
 				$scope.purchaseAndSale = resp.data[0];
 				
@@ -170,8 +168,10 @@ angular.module('your_app_name.controllers', [])
 				$scope.IsBalanceFile = $scope.purchaseAndSale['IsBalanceFile'] == 1 ? true : false;
 				$scope.IsFilesTo = $scope.purchaseAndSale['IsFilesToS‌ignFile'] == 1 ? true : false;
 				$scope.showNote = $scope.purchaseAndSale['ShowNote'] == 1 ? true : false;
+								
 			} else {
 				$scope.msg = "No data to display";		
+				$scope.isMsg = true;
 				$scope.isHasData = false;
 			}
 			
@@ -179,6 +179,7 @@ angular.module('your_app_name.controllers', [])
 		    console.error('ERR', err);
 		})
 	}
+	
 	$rootScope.$watch("propertyId", $scope.getData);
 
 	// clicking on file icon get the files from server and show them on slider page
@@ -207,7 +208,8 @@ angular.module('your_app_name.controllers', [])
 		}).then(function(resp) {
 			if (resp.data.length != 0) {
 				$scope.isHasData = true;
-			
+				$scope.isMsg = false;
+				
 				$scope.closing = resp.data[0];
 
 				$scope.IsHasFile = $scope.closing['IsHasFile'] == 1 ? true : false;
@@ -217,6 +219,7 @@ angular.module('your_app_name.controllers', [])
 				$scope.showNote = $scope.closing['ShowNote'] == 1 ? true : false;
 			} else {
 				$scope.msg = "No data to display";			
+				$scope.isMsg = true;
 				$scope.isHasData = false;
 			}
 			
@@ -252,7 +255,8 @@ angular.module('your_app_name.controllers', [])
 		}).then(function(resp) {
 			if (resp.data.length != 0) {
 				$scope.isHasData = true;
-			
+				$scope.isMsg = false;
+				
 				$scope.renovation = resp.data[0];
 			
 				$scope.IsHasFile = $scope.renovation['IsHasFile'] == 1 ? true : false;
@@ -265,6 +269,7 @@ angular.module('your_app_name.controllers', [])
 				$scope.showNote = $scope.renovation['ShowNote'] == 1 ? true : false;
 			} else {
 				$scope.msg = "No data to display";			
+				$scope.isMsg = true;
 				$scope.isHasData = false;
 			}
 			
@@ -289,47 +294,55 @@ angular.module('your_app_name.controllers', [])
 })
 
 //LeasingCtrl
-.controller('LeasingCtrl', function($scope, $rootScope, $http, $ionicLoading, FileService, allFilesService) {	
+.controller('LoginCtrl', function($scope, $http, $state, $templateCache, $location) {
 	
-	$scope.getData = function() {
-		$http({
-		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Leasing', 
-		    method: "GET",
-		    params:  {index:propertyId}, 
-		    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-		}).then(function(resp) {
-			if (resp.data.length != 0) {
-				$scope.isHasData = true;
-			
-				$scope.leasing = resp.data[0];
-			
-				$scope.IsHasFile = $scope.leasing['IsHasFile'] == 1 ? true : false;
-				$scope.IsApplicationFile = $scope.leasing['IsApplicationFile'] == 1 ? true : false;
-				$scope.IsLeaseFile = $scope.leasing['IsLeaseFile'] == 1 ? true : false;
-				$scope.showNote = $scope.leasing['ShowNote'] == 1 ? true : false;
-			} else {
-				$scope.msg = "No data to display";			
-				$scope.isHasData = false;
-			}
-			
-		}, function(err) {
-		    console.error('ERR', err);
-		})	
+	if(localStorage.getItem('email') != null){
+		$scope.email = localStorage.getItem('email');
+		$scope.psw = localStorage.getItem('password');
+	} else {
+		$scope.email = "";
+		$scope.psw = "";
 	}
-	$rootScope.$watch("propertyId", $scope.getData);
+
+
+	$scope.submit = function() {
+    	var email = this.login_form.user_email.$viewValue;
+        var psw = this.login_form.user_password.$viewValue;
+       
+    $http({
+	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Login', 
+	    method: "POST",
+	    data:  {mail:email,
+	    	    password:psw}, 
+	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+	    
+	}).then(function(resp) {
+		if(resp.data == "false") {
+			$scope.msg = "The Email or Password incorrect";
+		}
+		else {
+			localStorage.setItem("loginUserType", resp.data["Type"]);
+			if(resp.data["Type"] == "user") {
+				loginUserType = "user";
+				localStorage.setItem("id", resp.data["UserId"]);
+				localStorage.setItem("isAdmin", resp.data["IsAdmin"]);
+				localStorage.setItem("branch", resp.data["BranchId"]);
+
+				localStorage.setItem("email", email);
+				localStorage.setItem("password", psw);
+
+			}
+			else {
+				loginUserType = "client";
+				localStorage.setItem("id", resp.data["ClientId"]);
+			}
+			$location.path( "/app/properties" );
+		}
 	
-	// clicking on file icon get the files from server and show them on slider page
-	$scope.getFile = function(propId, typeId) {		
-		var promise = FileService.getFiles(propId, typeId);
-		promise.then(
-	          function(propId, typeId) { 
-	        	  $scope.result = allFilesService.getAllFiles();    	  
-	        	  var unbind = $rootScope.$broadcast( "bbb", "aa" );
-	          },
-	          function(errorPayload) {
-	              $log.error('failure loading file', errorPayload);
-	          });
-	};
+	}, function(err) {
+	    console.error('ERR', err);
+	})
+    };
 })
 
 //OccupiedCtrl
@@ -344,6 +357,7 @@ angular.module('your_app_name.controllers', [])
 		}).then(function(resp) {
 			if (resp.data.length != 0) {
 				$scope.isHasData = true;
+				$scope.isMsg = false;
 			
 				$scope.occupied = resp.data[0];
 			
@@ -352,6 +366,7 @@ angular.module('your_app_name.controllers', [])
 				$scope.showNote = $scope.occupied['ShowNote'] == 1 ? true : false;
 			} else {
 				$scope.msg = "No data to display";			
+				$scope.isMsg = true;
 				$scope.isHasData = false;
 			}
 			
@@ -387,6 +402,7 @@ angular.module('your_app_name.controllers', [])
 		}).then(function(resp) {
 			if (resp.data.length != 0) {
 				$scope.isHasData = true;
+				$scope.isMsg = false;
 			
 				$scope.eviction = resp.data[0];
 
@@ -394,6 +410,7 @@ angular.module('your_app_name.controllers', [])
 				$scope.showNote = $scope.eviction['ShowNote'] == 1 ? true : false;
 			} else {
 				$scope.msg = "No data to display";			
+				$scope.isMsg = true;
 				$scope.isHasData = false;
 			}
 

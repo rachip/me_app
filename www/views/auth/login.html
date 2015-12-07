@@ -8,10 +8,10 @@
               <my-tab title="Email">
                 <div class="list">
                   <label class="item item-input">
-                    <input type="email" placeholder="Email" name="user_email" ng-model="email" required>
+                    <input type="email" placeholder="Email" name="user_email" value="{{email}}" ng-model="email" required>
                   </label>
                   <label class="item item-input" show-hide-container>
-                    <input type="password" placeholder="Password" name="user_password" ng-model="password" required show-hide-input>
+                    <input type="password" placeholder="Password" name="user_password" ng-model="password" value="{{psw}}" required show-hide-input>
                   </label>
                   <div class="incorectLogin">
             	  	{{msg}}
