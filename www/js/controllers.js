@@ -1,9 +1,10 @@
+
 var loginUserType;
 var propertyId;
 var propertyImageId;
 var files = [];
 
-angular.module('your_app_name.controllers', [])
+angular.module('your_app_name.controllers', ['ionic', 'ngCordova'])
 
 .controller('AuthCtrl', function($scope, $ionicConfig) {
 
@@ -54,9 +55,20 @@ angular.module('your_app_name.controllers', [])
 
 //LOGIN
 .controller('LoginCtrl', function($scope, $http, $state, $templateCache, $location) {
+	if(localStorage.getItem("email") != null) {
+		$scope.email = localStorage.getItem("email");
+		$scope.psw = localStorage.getItem("password");
+	} else {
+		$scope.email = "";
+		$scope.psw = "";
+	}
+
+
+
 	$scope.submit = function() {
     	var email = this.login_form.user_email.$viewValue;
         var psw = this.login_form.user_password.$viewValue;
+
        
     $http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Login', 
@@ -76,11 +88,17 @@ angular.module('your_app_name.controllers', [])
 				localStorage.setItem("id", resp.data["UserId"]);
 				localStorage.setItem("isAdmin", resp.data["IsAdmin"]);
 				localStorage.setItem("branch", resp.data["BranchId"]);
+				localStorage.setItem("email", email);
+				localStorage.setItem("password", psw);
+
 			}
 			else {
 				loginUserType = "client";
 				localStorage.setItem("id", resp.data["ClientId"]);
+				localStorage.setItem("email", email);
+				localStorage.setItem("password", psw);
 			}
+			console.log("localemail:" + localStorage.getItem("email"));
 			$location.path( "/app/properties" );
 		}
 	
@@ -294,16 +312,8 @@ angular.module('your_app_name.controllers', [])
 })
 
 //LeasingCtrl
-.controller('LoginCtrl', function($scope, $http, $state, $templateCache, $location) {
+.controller('LeasingCtrl', function($scope, $rootScope, $http, $ionicLoading, FileService, allFilesService) {	
 	
-<<<<<<< HEAD
-	if(localStorage.getItem('email') != null){
-		$scope.email = localStorage.getItem('email');
-		$scope.psw = localStorage.getItem('password');
-	} else {
-		$scope.email = "";
-		$scope.psw = "";
-=======
 	$scope.getData = function() {
 		$http({
 		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Leasing', 
@@ -330,48 +340,21 @@ angular.module('your_app_name.controllers', [])
 		}, function(err) {
 		    console.error('ERR', err);
 		})	
->>>>>>> 812891bd1292f1bd172463a96275e8a7082e8e64
 	}
-
-
-	$scope.submit = function() {
-    	var email = this.login_form.user_email.$viewValue;
-        var psw = this.login_form.user_password.$viewValue;
-       
-    $http({
-	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Login', 
-	    method: "POST",
-	    data:  {mail:email,
-	    	    password:psw}, 
-	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-	    
-	}).then(function(resp) {
-		if(resp.data == "false") {
-			$scope.msg = "The Email or Password incorrect";
-		}
-		else {
-			localStorage.setItem("loginUserType", resp.data["Type"]);
-			if(resp.data["Type"] == "user") {
-				loginUserType = "user";
-				localStorage.setItem("id", resp.data["UserId"]);
-				localStorage.setItem("isAdmin", resp.data["IsAdmin"]);
-				localStorage.setItem("branch", resp.data["BranchId"]);
-
-				localStorage.setItem("email", email);
-				localStorage.setItem("password", psw);
-
-			}
-			else {
-				loginUserType = "client";
-				localStorage.setItem("id", resp.data["ClientId"]);
-			}
-			$location.path( "/app/properties" );
-		}
+	$rootScope.$watch("propertyId", $scope.getData);
 	
-	}, function(err) {
-	    console.error('ERR', err);
-	})
-    };
+	// clicking on file icon get the files from server and show them on slider page
+	$scope.getFile = function(propId, typeId) {		
+		var promise = FileService.getFiles(propId, typeId);
+		promise.then(
+	          function(propId, typeId) { 
+	        	  $scope.result = allFilesService.getAllFiles();    	  
+	        	  var unbind = $rootScope.$broadcast( "bbb", "aa" );
+	          },
+	          function(errorPayload) {
+	              $log.error('failure loading file', errorPayload);
+	          });
+	};
 })
 
 //OccupiedCtrl
@@ -420,7 +403,7 @@ angular.module('your_app_name.controllers', [])
 })
 
 //EvictionCtrl
-.controller('EvictionCtrl', function($scope, $rootScope, $timeout, $http, $ionicLoading, FileService, allFilesService) {
+.controller('EvictionCtrl', function($scope, $rootScope, $timeout, $http, $ionicLoading, $cordovaFileOpener2, FileService, allFilesService) {
 	
 	$scope.getData = function() {
 		$http({
@@ -463,7 +446,28 @@ angular.module('your_app_name.controllers', [])
 	};
 })
 
-.controller('ShowFilesCtrl', function($scope, $window,  allFilesService) {
+.controller('ShowFilesCtrl', function($scope, $cordovaFileOpener2, $ionicPlatform, allFilesService) {
+
+
+$scope.openPDF = function() {
+
+window.open('http://shturem.net/images/news/82222_news_21082015_4995.pdf', '_system', 'location=no');
+
+
+
+    $cordovaFileOpener2.open(
+        'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/uploads/1449492936doxigen.pdf‏', // Any system location, you CAN'T use your appliaction assets folder
+        'application/pdf'
+    ).then(function() {
+        console.log('Success');
+        alert("Success");
+    }, function(err) {
+        console.log('An error occurred: ' + JSON.stringify(err));
+         alert('An error occurred: ' + JSON.stringify(err));
+    });
+};
+
+
 	$scope.$on( "bbb", function(event, data) {
 		$scope.allFiles = allFilesService.getAllFiles();
 	});

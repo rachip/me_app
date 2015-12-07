@@ -1,6 +1,6 @@
 // Ionic Starter App
 
-angular.module('underscore', [])
+angular.module('underscore', ['ionic', 'ngCordova'])
 .factory('_', function() {
   return window._; // assumes underscore has already been loaded on the page
 });
