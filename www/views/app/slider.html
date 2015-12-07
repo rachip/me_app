@@ -1,12 +1,16 @@
 <ion-view class="slider-view">
   <ion-nav-title>
-    <span>Slider</span>
+    <span>Show Files</span>
   </ion-nav-title>
   <ion-content ng-if="allFiles.length>0" scroll="false">    
     <ion-slide-box  show-pager="true">
+<<<<<<< HEAD
       <ion-slide ng-repeat="file in allFiles">             	
+=======
+      <ion-slide ng-repeat="file in allFiles">       	
+>>>>>>> 812891bd1292f1bd172463a96275e8a7082e8e64
         <div class="list card">
-          <div class="item item-image">
+          <div class="item item-image imageHeight">
             <img ng-src="http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/uploads/{{file.FileName}}">
           </div>
         </div>

@@ -296,12 +296,41 @@ angular.module('your_app_name.controllers', [])
 //LeasingCtrl
 .controller('LoginCtrl', function($scope, $http, $state, $templateCache, $location) {
 	
+<<<<<<< HEAD
 	if(localStorage.getItem('email') != null){
 		$scope.email = localStorage.getItem('email');
 		$scope.psw = localStorage.getItem('password');
 	} else {
 		$scope.email = "";
 		$scope.psw = "";
+=======
+	$scope.getData = function() {
+		$http({
+		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Leasing', 
+		    method: "GET",
+		    params:  {index:propertyId}, 
+		    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+		}).then(function(resp) {
+			if (resp.data.length != 0) {
+				$scope.isHasData = true;
+				$scope.isMsg = false;
+			
+				$scope.leasing = resp.data[0];
+			
+				$scope.IsHasFile = $scope.leasing['IsHasFile'] == 1 ? true : false;
+				$scope.IsApplicationFile = $scope.leasing['IsApplicationFile'] == 1 ? true : false;
+				$scope.IsLeaseFile = $scope.leasing['IsLeaseFile'] == 1 ? true : false;
+				$scope.showNote = $scope.leasing['ShowNote'] == 1 ? true : false;
+			} else {
+				$scope.msg = "No data to display";			
+				$scope.isMsg = true;
+				$scope.isHasData = false;
+			}
+			
+		}, function(err) {
+		    console.error('ERR', err);
+		})	
+>>>>>>> 812891bd1292f1bd172463a96275e8a7082e8e64
 	}
 
 
