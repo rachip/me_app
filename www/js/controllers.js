@@ -12,8 +12,7 @@ angular.module('your_app_name.controllers', [])
 // APP
 .controller('AppCtrl', function($scope, $location, $ionicConfig, $rootScope, $http, $ionicPopup) {
 
-	$scope.currentPath = $location.path();
-	console.log($scope.currentPath);
+	$rootScope.currentPath = $location.path();
 	
 	$scope.$on( "aaa", function(event, data) {
 		$scope.msg = data.name;
@@ -23,9 +22,7 @@ angular.module('your_app_name.controllers', [])
 	$scope.updateMe = function() {
 		var str = $location.path();
 		var arr = str.split("/app/");
-		    
-		console.log(arr[1]);
-		console.log($rootScope.propertyId);
+		
 		$http({
 		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/RequestUpdate', 
 		    method: "POST",
@@ -148,8 +145,9 @@ angular.module('your_app_name.controllers', [])
 })
 
 // PurchaseAndSaleCtrl
-.controller('PurchaseAndSaleCtrl', function($scope, $rootScope, $log, $http, $ionicLoading, $stateParams, FileService, allFilesService) {
-	$scope.getData = function() {	
+.controller('PurchaseAndSaleCtrl', function($scope, $rootScope, $log, $location, $http, $ionicLoading, $stateParams, FileService, allFilesService) {
+	
+	$scope.getData = function() {
 		$http({
 		    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/PurchaseAndSale', 
 		    method: "GET",
@@ -181,7 +179,7 @@ angular.module('your_app_name.controllers', [])
 	}
 	
 	$rootScope.$watch("propertyId", $scope.getData);
-
+	
 	// clicking on file icon get the files from server and show them on slider page
 	$scope.getFile = function(propId, typeId) {		
 		var promise = FileService.getFiles(propId, typeId);

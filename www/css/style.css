@@ -7,7 +7,12 @@
 }
 
 .updateMeBth {
-	border-color: white;
+	border-color: white;	
+}
+
+.bar.app-top-bar .button.updateMeBth {
+	font-weight: bold;
+	color: black !important;
 }
 
 .pointer {

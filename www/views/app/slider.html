@@ -7,6 +7,7 @@
       <ion-slide ng-repeat="file in allFiles">       	
         <div class="list card">
           <div class="item item-image imageHeight">
+            <h2>{{file.FileName}}</h2>
             <img ng-src="http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/uploads/{{file.FileName}}">
           </div>
         </div>
