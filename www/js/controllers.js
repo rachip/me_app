@@ -1,9 +1,10 @@
+
 var loginUserType;
 var propertyId;
 var propertyImageId;
 var files = [];
 
-angular.module('your_app_name.controllers', [])
+angular.module('your_app_name.controllers', ['ionic', 'ngCordova'])
 
 .controller('AuthCtrl', function($scope, $ionicConfig) {
 
@@ -51,9 +52,20 @@ angular.module('your_app_name.controllers', [])
 
 //LOGIN
 .controller('LoginCtrl', function($scope, $http, $state, $templateCache, $location) {
+	if(localStorage.getItem("email") != null) {
+		$scope.email = localStorage.getItem("email");
+		$scope.psw = localStorage.getItem("password");
+	} else {
+		$scope.email = "";
+		$scope.psw = "";
+	}
+
+
+
 	$scope.submit = function() {
     	var email = this.login_form.user_email.$viewValue;
         var psw = this.login_form.user_password.$viewValue;
+
        
     $http({
 	    url: 'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/index.php/api/Login', 
@@ -73,11 +85,17 @@ angular.module('your_app_name.controllers', [])
 				localStorage.setItem("id", resp.data["UserId"]);
 				localStorage.setItem("isAdmin", resp.data["IsAdmin"]);
 				localStorage.setItem("branch", resp.data["BranchId"]);
+				localStorage.setItem("email", email);
+				localStorage.setItem("password", psw);
+
 			}
 			else {
 				loginUserType = "client";
 				localStorage.setItem("id", resp.data["ClientId"]);
+				localStorage.setItem("email", email);
+				localStorage.setItem("password", psw);
 			}
+			console.log("localemail:" + localStorage.getItem("email"));
 			$location.path( "/app/properties" );
 		}
 	
@@ -383,7 +401,7 @@ angular.module('your_app_name.controllers', [])
 })
 
 //EvictionCtrl
-.controller('EvictionCtrl', function($scope, $rootScope, $timeout, $http, $ionicLoading, FileService, allFilesService) {
+.controller('EvictionCtrl', function($scope, $rootScope, $timeout, $http, $ionicLoading, $cordovaFileOpener2, FileService, allFilesService) {
 	
 	$scope.getData = function() {
 		$http({
@@ -426,7 +444,28 @@ angular.module('your_app_name.controllers', [])
 	};
 })
 
-.controller('ShowFilesCtrl', function($scope, $window,  allFilesService) {
+.controller('ShowFilesCtrl', function($scope, $cordovaFileOpener2, $ionicPlatform, allFilesService) {
+
+
+$scope.openPDF = function() {
+
+window.open('http://shturem.net/images/news/82222_news_21082015_4995.pdf', '_system', 'location=no');
+
+
+
+    $cordovaFileOpener2.open(
+        'http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/uploads/1449492936doxigen.pdf‏', // Any system location, you CAN'T use your appliaction assets folder
+        'application/pdf'
+    ).then(function() {
+        console.log('Success');
+        alert("Success");
+    }, function(err) {
+        console.log('An error occurred: ' + JSON.stringify(err));
+         alert('An error occurred: ' + JSON.stringify(err));
+    });
+};
+
+
 	$scope.$on( "bbb", function(event, data) {
 		$scope.allFiles = allFilesService.getAllFiles();
 	});

@@ -3,14 +3,17 @@
     <span>Show Files</span>
   </ion-nav-title>
   <ion-content ng-if="allFiles.length>0" scroll="false">    
-    <ion-slide-box  show-pager="true">
+    <ion-slide-box  show-pager="true">         	
       <ion-slide ng-repeat="file in allFiles">       	
+
         <div class="list card">
           <div class="item item-image imageHeight">
             <h2>{{file.FileName}}</h2>
             <img ng-src="http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/uploads/{{file.FileName}}">
           </div>
         </div>
+
+        <div ng-click="openPDF()" style="cursor: pointer;"> click me!! </div>
       </ion-slide>
     </ion-slide-box>
   </ion-content>

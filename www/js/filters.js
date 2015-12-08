@@ -1,4 +1,4 @@
-angular.module('your_app_name.filters', [])
+angular.module('your_app_name.filters', ['ionic', 'ngCordova'])
 
 .filter('rawHtml', function($sce){
   return function(val) {
