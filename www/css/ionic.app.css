@@ -7784,7 +7784,7 @@ ion-spinner.spinner-on-load {
   left: calc(50% - 14px); }
 
 .multi-bg-outer {
-  position: relative;
+/*   position: relative; */
   background-color: rgba(0, 0, 0, 0.7);
   height: 100%;
   -webkit-transition: all ease-in-out .3s;

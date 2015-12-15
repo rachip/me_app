@@ -1,11 +1,15 @@
 <ion-view class="login-view auth-view" cache-view="false">
   <ion-content scroll="false">
+ 
     <div class="row">
       <div class="col col-center">
+      	<div class="loginLogo">
+      		<img src="img/Login.jpg">
+      	</div>      	
         <div class="card login-container" content-tabs tabsdata='tabsdata'>
           <form ng-submit="submit()" method="post" name="login_form" class="" novalidate ng-cloak>
             <my-tabs>
-              <my-tab title="Email">
+              <my-tab title="Login">
                 <div class="list">
                   <label class="item item-input">
                     <input type="email" name="user_email" ng-model="userDetail.email" placeholder="Email" required>

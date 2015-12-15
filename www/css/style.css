@@ -24,3 +24,13 @@
     width: 100%;
     overflow: hidden	
 }
+
+.loginLogo {
+	width: 100%;
+}
+
+.loginLogo img{
+    width: 194px;
+    margin: 0px auto;
+    display: block;
+}
