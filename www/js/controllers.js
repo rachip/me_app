@@ -178,7 +178,7 @@ angular.module('your_app_name.controllers', ['ionic', 'ngCordova'])
 				$scope.showNote = $scope.purchaseAndSale['ShowNote'] == 1 ? true : false;
 								
 			} else {
-				$scope.msg = "No data to display";		
+				$scope.msg = "Your property is not on Purchase And Sale status";		
 				$scope.isMsg = true;
 				$scope.isHasData = false;
 			}
@@ -226,7 +226,7 @@ angular.module('your_app_name.controllers', ['ionic', 'ngCordova'])
 				$scope.IsClosingDocsFile = $scope.closing['IsClosingDocsFile'] == 1 ? true : false;
 				$scope.showNote = $scope.closing['ShowNote'] == 1 ? true : false;
 			} else {
-				$scope.msg = "No data to display";			
+				$scope.msg = "Your property is not on Closing status";			
 				$scope.isMsg = true;
 				$scope.isHasData = false;
 			}
@@ -276,7 +276,7 @@ angular.module('your_app_name.controllers', ['ionic', 'ngCordova'])
 				$scope.IsCOFOFile = $scope.renovation['IsCOFOFile'] == 1 ? true : false;
 				$scope.showNote = $scope.renovation['ShowNote'] == 1 ? true : false;
 			} else {
-				$scope.msg = "No data to display";			
+				$scope.msg = "Your property is not on Renovation status";			
 				$scope.isMsg = true;
 				$scope.isHasData = false;
 			}
@@ -322,7 +322,7 @@ angular.module('your_app_name.controllers', ['ionic', 'ngCordova'])
 				$scope.IsLeaseFile = $scope.leasing['IsLeaseFile'] == 1 ? true : false;
 				$scope.showNote = $scope.leasing['ShowNote'] == 1 ? true : false;
 			} else {
-				$scope.msg = "No data to display";			
+				$scope.msg = "Your property is not on Leasing status";			
 				$scope.isMsg = true;
 				$scope.isHasData = false;
 			}
@@ -367,7 +367,7 @@ angular.module('your_app_name.controllers', ['ionic', 'ngCordova'])
 				$scope.IsMaintanenceFile = $scope.occupied['IsMaintanenceFile'] == 1 ? true : false;
 				$scope.showNote = $scope.occupied['ShowNote'] == 1 ? true : false;
 			} else {
-				$scope.msg = "No data to display";			
+				$scope.msg = "Your property is not on Occupied status";			
 				$scope.isMsg = true;
 				$scope.isHasData = false;
 			}
@@ -411,7 +411,7 @@ angular.module('your_app_name.controllers', ['ionic', 'ngCordova'])
 				$scope.IsHasFile = $scope.eviction['IsHasFile'] == 1 ? true : false;
 				$scope.showNote = $scope.eviction['ShowNote'] == 1 ? true : false;
 			} else {
-				$scope.msg = "No data to display";			
+				$scope.msg = "Your property is not on Eviction status";			
 				$scope.isMsg = true;
 				$scope.isHasData = false;
 			}
