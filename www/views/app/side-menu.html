@@ -1,0 +1,59 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content class="post-size-14px">
+    <ion-nav-bar class="bar app-top-bar">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left" ng-show="showBtns">
+        </button>
+      </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+       	<button class="button updateMeBth" ng-click="updateMe()" >Update Me</button>
+       </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" class="main-menu" expose-aside-when="large">
+    <ion-content>
+      <ion-list>
+        <ion-item class="heading-item item item-avatar" nav-clear menu-close ui-sref="app.properties">
+          <div class="user-image-container">
+            <pre-img ratio="_1_1" helper-class="rounded-image">
+              <img class="user-image" ng-src="http://ec2-52-32-92-71.us-west-2.compute.amazonaws.com/ci/uploads/{{url}}" spinner-on-load >
+          	</pre-img>
+          </div>
+          <h2 class="greeting">{{msg}}</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.PurchasesAndSales">
+          <i class="icon ion-android-list"></i>
+          <h2 class="menu-text">Purchases And Sales</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.Closing">
+          <i class="icon ion-arrow-graph-down-right"></i>
+          <h2 class="menu-text">Closing</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.Renovations">
+          <i class="icon ion-settings"></i>
+          <h2 class="menu-text">Renovation</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.Leasing">
+          <i class="icon ion-wand"></i>
+          <h2 class="menu-text">Leasing</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.OccupiedProperty">
+          <i class="icon ion-asterisk"></i>
+          <h2 class="menu-text">Occupied Property</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.Evictions">
+          <i class="icon ion-android-exit"></i>
+          <h2 class="menu-text">Eviction</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.properties">
+          <i class="icon ion-android-home"></i>
+          <h2 class="menu-text">Choose Property</h2>
+        </ion-item>
+    </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

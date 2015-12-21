@@ -1,0 +1,156 @@
+<ion-view class="renovation-view">
+  
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+ 
+  <ion-nav-title>
+    <span>Renovation Property</span>
+  </ion-nav-title>
+  
+<ion-content>
+    <div ng-show="isHasData" class="list renovation-functionalities">
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-clipboard"></i>
+        <div>
+          <strong><span class="title text_type_bold">Property Name</span></strong>
+          <p class="description">{{renovation['PropertyName']}}</p>
+          <i ng-show="isHasFile" class="icon ion-android-document pointer"
+             ng-click="getFile(renovation['PropertyId'], 24)" ui-sref="app.slider" >
+          </i>    
+        </div>
+      </div>
+     
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-help"></i>
+        <div>
+          <strong><span class="title">Is Sent Funds</span></strong>
+          <p class="description">
+          	{{renovation['IsSentFunds'] == 1 ? "Yes" : "No"}}
+          </p>
+        </div>
+      </div>
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-social-usd-outline"></i>
+        <div>
+          <strong><span class="title">Funds Sent</span></strong>
+          <p class="description">{{renovation['FundsSent']}}</p>
+          <i ng-show="IsFundsSentFile" class="icon ion-android-document pointer"
+             ng-click="getFile(renovation['PropertyId'], 9)" ui-sref="app.slider" >
+          </i>    
+        </div>
+      </div>
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-compose"></i>
+        <div>
+          <strong><span class="title">Work Estimate</span></strong>
+          <p class="description">{{renovation['WorkEstimate']}}</p>
+          <i ng-show="IsWorkEstimateFile" class="icon ion-android-document pointer"
+             ng-click="getFile(renovation['PropertyId'], 10)" ui-sref="app.slider" >
+          </i>   
+        </div>
+      </div>
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-ios-calendar-outline"></i>
+        <div>
+          <strong><span class="title">Start Date</span></strong>
+          <p class="description">{{renovation['StartDate']}}</p>
+        </div>
+      </div>
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-ios-calendar-outline"></i>
+        <div>
+          <strong><span class="title">End Date</span></strong>
+          <p class="description">{{renovation['FinishDate']}}</p>
+        </div>
+      </div>
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-social-usd-outline"></i>
+        <div>
+          <strong><span class="title">First Payment</span></strong>
+          <p class="description">
+          	{{renovation['Payment1'] == 1 ? "Yes" : "No"}}
+          </p>
+          <i ng-show="IsPayment1File" class="icon ion-android-document pointer"
+             ng-click="getFile(renovation['PropertyId'], 11)" ui-sref="app.slider">
+          </i>  
+        </div>
+      </div>
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-social-usd-outline"></i>
+        <div>
+          <strong><span class="title">Second Payment</span></strong>
+          <p class="description">
+          	{{renovation['Payment2'] == 1 ? "Yes" : "No"}}
+          </p>
+          <i ng-show="IsPayment2File" class="icon ion-android-document pointer"
+             ng-click="getFile(renovation['PropertyId'], 12)" ui-sref="app.slider"> 
+          </i>  
+        </div>
+      </div>
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-social-usd-outline"></i>
+        <div>
+          <strong><span class="title">Third Payment</span></strong>
+          <p class="description">
+          	{{renovation['Payment3'] == 1 ? "Yes" : "No"}}
+          </p>
+          <i ng-show="IsPayment3File" class="icon ion-android-document pointer"
+             ng-click="getFile(renovation['PropertyId'], 13)" ui-sref="app.slider">
+          </i>  
+        </div>
+      </div>
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-android-clipboard"></i>
+        <div>
+          <strong><span class="title">CofO</span></strong>
+          <p class="description">
+          	{{renovation['CofO'] == 1 ? "Yes" : "No"}}
+          </p>
+          <i ng-show="IsCOFOFile" class="icon ion-android-document pointer"
+             ng-click="getFile(renovation['PropertyId'], 14)" ui-sref="app.slider">
+          </i>  
+        </div>
+      </div>
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-android-calendar"></i>
+        <div>
+          <strong><span class="title">CofO Date</span></strong>
+          <p class="description">{{renovation['CofODate']}}</p>
+        </div>
+      </div>
+      
+      <div ng-show="showNote" class="item item-icon-left item-icon-right">
+        <i class="icon ion-ios-paper-outline"></i>
+        <div>
+          <strong><span class="title">Note</span></strong>
+          <p class="description">{{renovation['Note']}}</p>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div ng-show="isMsg">
+		<div class="card">
+			<div class="item item-divider">
+		    </div>
+		    <div class="item item-text-wrap">
+		    	{{msg}}
+		    </div>
+		    <div class="item item-divider">
+		    </div>
+		</div>
+	</div>
+  </ion-content>
+  
+</ion-view>

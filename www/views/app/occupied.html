@@ -1,0 +1,125 @@
+<ion-view class="occupied-view">
+  
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+ 
+  <ion-nav-title>
+    <span>Occupied Property</span>
+  </ion-nav-title>
+  
+<ion-content>
+    <div  ng-show="isHasData" class="list occupied-functionalities">
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-clipboard"></i>
+        <div>
+          <strong><span class="title text_type_bold">Property Name</span></strong>
+          <p class="description">{{occupied['PropertyName']}}</p>
+          <i ng-show="IsHasFile" class="icon ion-android-document pointer" 
+             ng-click="getFile(occupied['PropertyId'], 20)" ui-sref="app.slider">
+          </i>
+        </div>
+      </div>
+     
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-gear-a"></i>
+        <div>
+          <strong><span class="title">Portion</span></strong>
+          <p class="description">{{occupied['Portion']}}</p>
+        </div>
+      </div>
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-shuffle"></i>
+        <div>
+          <strong><span class="title">Tenants Portion</span></strong>
+          <p class="description">{{occupied['TenantsPortion']}}</p>
+        </div>
+      </div>
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-grid"></i>
+        <div>
+          <strong><span class="title">Payment Status</span></strong>
+          <p class="description">{{occupied['PaymentStatus']}}</p>
+        </div>
+      </div>
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-social-usd-outline"></i>
+        <div>
+          <strong><span class="title">Outstanding Balance</span></strong>
+          <p class="description">{{occupied['OutstandingBalance']}}</p>
+        </div>
+      </div>
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-settings"></i>
+        <div>
+          <strong><span class="title">Maintanence</span></strong>
+          <p class="description">{{occupied['Maintanence']}}</p>
+          <i ng-show="IsMaintanenceFile" class="icon ion-android-document pointer"
+          	 ng-click="getFile(occupied['PropertyId'], 17)" ui-sref="app.slider">
+          </i>
+        </div>
+      </div>
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-help"></i>
+        <div>
+          <strong><span class="title">Eviction</span></strong>
+          <p class="description">
+          	{{occupied['Eviction'] == 1 ? "Yes" : "No"}}
+          </p>
+        </div>
+      </div>
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-android-calendar"></i>
+        <div>
+          <strong><span class="title">Eviction Date</span></strong>
+          <p class="description">{{occupied['EvictionDate']}}</p>
+        </div>
+      </div>
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-ios-compose-outline"></i>
+        <div>
+          <strong><span class="title">Eviction Note</span></strong>
+          <p class="description">{{occupied['EvictionNote']}}</p>
+        </div>
+      </div>
+      
+      <div class="item item-icon-left item-icon-right">
+        <i class="icon ion-android-calendar"></i>
+        <div>
+          <strong><span class="title">Going To Be Vacent</span></strong>
+          <p class="description">{{occupied['GoingToBeVacent']}}</p>
+        </div>
+      </div>
+      
+      <div ng-show="showNote" class="item item-icon-left item-icon-right">
+        <i class="icon ion-ios-paper-outline"></i>
+        <div>
+          <strong><span class="title">Note</span></strong>
+          <p class="description">{{occupied['Note']}}</p>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div ng-show="isMsg">
+		<div class="card">
+			<div class="item item-divider">
+		    </div>
+		    <div class="item item-text-wrap">
+		    	{{msg}}
+		    </div>
+		    <div class="item item-divider">
+		    </div>
+		</div>
+	</div>
+  </ion-content>
+  
+</ion-view>

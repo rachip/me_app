@@ -1,0 +1,100 @@
+<ion-view class="login-view auth-view" cache-view="false">
+  <ion-content scroll="false">
+
+      <div class="loginLogo">
+          <img src="img/Logo_White.png">
+        </div>  
+ 
+    <div class="row responsive-sm rowMainScreen">
+
+
+      <div class="col">
+        	
+        <div class="" content-tabs tabsdata='tabsdata'>
+          <form ng-submit="submit()" method="post" name="login_form" novalidate ng-cloak style="width: 76%; margin: 0px auto;">
+        
+                <div class="list">
+                  <label class="item item-input" style="margin-top: 20px;">
+                    <input type="email" name="user_email" ng-model="userDetail.email" placeholder="Email"  required>
+                  </label>
+                  <label class="item item-input" show-hide-container style="margin-top: 20px;">
+                    <input type="password" name="user_password" ng-model="userDetail.password" placeholder="Password" required show-hide-input>
+                  </label>
+                  <div class="incorectLogin">
+            	  	{{msg}}
+            	  </div>
+                </div>
+    
+            <div>
+              <button type="submit" class="button button-positive button-block" ng-disabled="login_form.user_email.$invalid || login_form.user_password.$invalid">
+                Log In
+              </button>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+
+ <div class="col selectPmain" ui-sref="marketing">
+
+  <h2> New properties </h2>
+
+
+
+        <ion-slide-box on-slide-changed="slideHasChanged($index)">
+          <ion-slide>
+
+            <div class="mainProperImgLogIn">
+
+                <div class="row">
+
+                  <div class="col">
+
+                     <img ng-src="http://www.updateme.co.il/uploads/1449689911IMG_5832.JPG">
+
+                   </div>  
+
+                   <div class="col">
+
+                    <img ng-src="http://www.updateme.co.il/uploads/144906430920080920190918.jpg">
+
+                  </div>
+
+             </div>
+
+
+            </div>
+          </ion-slide>
+
+           <ion-slide>
+
+            <div class="mainProperImgLogIn">
+
+                <div class="row">
+
+                  <div class="col">
+
+                     <img ng-src="http://www.updateme.co.il/uploads/1449689911IMG_5832.JPG">
+
+                   </div>  
+
+                   <div class="col">
+
+                    <img ng-src="http://www.updateme.co.il/uploads/1449064278download.jpg">
+
+                  </div>
+
+             </div>
+
+
+            </div>
+          </ion-slide>
+
+        </ion-slide-box>
+
+
+    </div>
+
+    </div>
+  </ion-content>
+</ion-view>
