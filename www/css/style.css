@@ -1,6 +1,11 @@
 /* Empty. Add your own CSS if you like */
 .incorectLogin {
+<<<<<<< HEAD
 	color: white;
+=======
+	color: red;
+    font-weight: bold;
+>>>>>>> 9d4baa9e180958d6ed23eceea712e9140882de44
     margin-top: 15px;
     margin-left: 3px;
 }
@@ -24,6 +29,7 @@
     overflow: hidden	
 }
 
+<<<<<<< HEAD
 .rowMainScreen {
 
 padding: 0px;
@@ -74,4 +80,14 @@ padding: 0px;
 .mainProperImgLogIn img {
     width: 100%;
     height: auto;
+=======
+.loginLogo {
+	width: 100%;
+}
+
+.loginLogo img{
+    width: 194px;
+    margin: 0px auto;
+    display: block;
+>>>>>>> 9d4baa9e180958d6ed23eceea712e9140882de44
 }

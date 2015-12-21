@@ -34,7 +34,10 @@ angular.module('your_app_name.controllers', ['ionic', 'ngCordova'])
 			
 		}, function(err) {
 		    console.error('ERR', err);
+<<<<<<< HEAD
 		    console.error('ERR', err);
+=======
+>>>>>>> 9d4baa9e180958d6ed23eceea712e9140882de44
 		})
 		
 		var alertPopup = $ionicPopup.alert({
@@ -91,7 +94,11 @@ angular.module('your_app_name.controllers', ['ionic', 'ngCordova'])
 			}
 		
 		}, function(err) {
+<<<<<<< HEAD
 		    $scope.msg = err;
+=======
+		    console.error('ERR', err);
+>>>>>>> 9d4baa9e180958d6ed23eceea712e9140882de44
 		})
     };
 })
@@ -460,6 +467,7 @@ angular.module('your_app_name.controllers', ['ionic', 'ngCordova'])
 		$scope.allFiles = allFilesService.getAllFiles();
 	});
 })
+<<<<<<< HEAD
 
 
 
@@ -470,3 +478,5 @@ angular.module('your_app_name.controllers', ['ionic', 'ngCordova'])
 })
 
 
+=======
+>>>>>>> 9d4baa9e180958d6ed23eceea712e9140882de44

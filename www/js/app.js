@@ -188,6 +188,7 @@ angular.module('me', [
     }
   })
 
+<<<<<<< HEAD
   //marketing part
 
    .state('marketing', {
@@ -246,9 +247,14 @@ angular.module('me', [
 
 
 
+=======
+>>>>>>> 9d4baa9e180958d6ed23eceea712e9140882de44
 ;
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/auth/login');
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9d4baa9e180958d6ed23eceea712e9140882de44

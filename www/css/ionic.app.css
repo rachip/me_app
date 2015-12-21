@@ -7791,8 +7791,11 @@ ion-spinner.spinner-on-load {
   transition: all ease-in-out .3s;
   background-size: cover;
   background-repeat: no-repeat;
+<<<<<<< HEAD
   background-position: center;
 
+=======
+>>>>>>> 9d4baa9e180958d6ed23eceea712e9140882de44
   z-index: -2; }
   .multi-bg-outer.finish-loading {
     background-color: transparent; }

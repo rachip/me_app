@@ -1,7 +1,13 @@
 {
+<<<<<<< HEAD
   "name": "meapp",
   "version": "1.1.1",
   "description": "meApp: An Ionic project",
+=======
+  "name": "me_app",
+  "version": "1.1.1",
+  "description": "me_app: An Ionic project",
+>>>>>>> 9d4baa9e180958d6ed23eceea712e9140882de44
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",

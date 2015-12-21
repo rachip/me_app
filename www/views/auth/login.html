@@ -1,5 +1,6 @@
 <ion-view class="login-view auth-view" cache-view="false">
   <ion-content scroll="false">
+<<<<<<< HEAD
 
       <div class="loginLogo">
           <img src="img/Logo_White.png">
@@ -18,14 +19,37 @@
                     <input type="email" name="user_email" ng-model="userDetail.email" placeholder="Email"  required>
                   </label>
                   <label class="item item-input" show-hide-container style="margin-top: 20px;">
+=======
+ 
+    <div class="row">
+      <div class="col col-center">
+      	<div class="loginLogo">
+      		<img src="img/Login.jpg">
+      	</div>      	
+        <div class="card login-container" content-tabs tabsdata='tabsdata'>
+          <form ng-submit="submit()" method="post" name="login_form" class="" novalidate ng-cloak>
+            <my-tabs>
+              <my-tab title="Login">
+                <div class="list">
+                  <label class="item item-input">
+                    <input type="email" name="user_email" ng-model="userDetail.email" placeholder="Email" required>
+                  </label>
+                  <label class="item item-input" show-hide-container>
+>>>>>>> 9d4baa9e180958d6ed23eceea712e9140882de44
                     <input type="password" name="user_password" ng-model="userDetail.password" placeholder="Password" required show-hide-input>
                   </label>
                   <div class="incorectLogin">
             	  	{{msg}}
             	  </div>
                 </div>
+<<<<<<< HEAD
     
             <div>
+=======
+              </my-tab>             
+            </my-tabs>
+            <div class="item item-body bottom-content">
+>>>>>>> 9d4baa9e180958d6ed23eceea712e9140882de44
               <button type="submit" class="button button-positive button-block" ng-disabled="login_form.user_email.$invalid || login_form.user_password.$invalid">
                 Log In
               </button>
@@ -34,6 +58,7 @@
           </form>
         </div>
       </div>
+<<<<<<< HEAD
 
  <div class="col selectPmain" ui-sref="marketing">
 
@@ -95,6 +120,8 @@
 
     </div>
 
+=======
+>>>>>>> 9d4baa9e180958d6ed23eceea712e9140882de44
     </div>
   </ion-content>
 </ion-view>
